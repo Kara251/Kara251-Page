@@ -11,6 +11,7 @@ const LOCALES = [
 const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
+const LOCALE_STORAGE_KEY = "kara251:locale";
 const BUTTON_BOOT_DURATION = 1680;
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
@@ -129,8 +130,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page。學園 × 青春 × 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "請先選擇語言",
-    gateSubtitle: "每次進站都會先停在這裡，請先選好語言，再進入首頁。",
-    gateNote: "這個首頁不會保留 Cookie，也不會記住語言偏好。",
+    gateSubtitle: "首次進站時，請先選好語言；之後會自動沿用，也可以隨時再切換。",
+    gateNote: "本站不使用 Cookie；語言偏好只會保存在你目前使用的瀏覽器中。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["森羅萬象，", "海納百川。"],
@@ -158,8 +159,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page。学园 × 青春 × 物语。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先选择语言",
-    gateSubtitle: "每次进站都会先停在这里，请先选择语言再进入首页。",
-    gateNote: "这个首页不保留 cookie，也不记住语言偏好。",
+    gateSubtitle: "首次进站时，请先选好语言；之后会自动沿用，也可以随时再切换。",
+    gateNote: "本站不使用 Cookie；语言偏好只会保存在你当前使用的浏览器中。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["森罗万象，", "海纳百川。"],
@@ -187,8 +188,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page。學園 × 青春 × 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先揀語言版本",
-    gateSubtitle: "每次進站都會先卡喺呢度，揀完語言先正式進首頁。",
-    gateNote: "呢個首頁卟留 cookie，也卟記語言偏好。",
+    gateSubtitle: "頭一回進站先揀語言，之後會自動沿用，想換也可以隨時再切。",
+    gateNote: "本站卟用 Cookie，語言偏好只會記喺你而家用緊個瀏覽器度。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["森囉萬象，", "海納百巛。"],
@@ -216,8 +217,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page。學園、青春、物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "請先擇其言",
-    gateSubtitle: "每次入站，皆先止於此；擇其言，而後入首頁。",
-    gateNote: "此頁不留 cookie，亦不記汝前所擇之語。",
+    gateSubtitle: "初至此站，請先擇其言；既擇之，後當自循，亦可隨時更之。",
+    gateNote: "本站不用 Cookie；所擇之語，僅存於汝今所用之瀏覽器。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["萬象並陳，", "百川咸納。"],
@@ -245,8 +246,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page. Academy x Youth x Story. Dr.Huang, aka Kara251.",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "Choose a language first",
-    gateSubtitle: "Every visit starts here first. Choose a language, then enter the site.",
-    gateNote: "This page keeps no cookies and does not remember language choices.",
+    gateSubtitle: "Choose your language on the first visit. After that, the site will remember it, and you can change it anytime.",
+    gateNote: "This site does not use cookies. Your language preference is stored only in the browser on this device.",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["Myriad forms unfold,", "all rivers find their sea."],
@@ -274,8 +275,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page。學園 × 青春 × 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先揀語言",
-    gateSubtitle: "每次入站都會先停喺呢度，揀好語言先入首頁。",
-    gateNote: "呢個首頁唔會留 Cookie，亦都唔會記住語言偏好。",
+    gateSubtitle: "第一次入站先揀好語言，之後會自動沿用；你亦都可以隨時再改。",
+    gateNote: "本站唔用 Cookie；語言偏好只會保存在你而家用緊嘅瀏覽器入面。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["千般萬象，", "百川歸海。"],
@@ -303,8 +304,8 @@ const COPY = {
     metaDescription: "Kara251 Landing Page. 学園 x 青春 x 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先に言語を選んでください",
-    gateSubtitle: "このページは毎回ここから始まります。言語を選んでからトップへ入ってください。",
-    gateNote: "このページは cookie を保持せず、言語設定も保存しません。",
+    gateSubtitle: "初回アクセス時に言語を選んでください。以後は自動で引き継がれ、いつでも変更できます。",
+    gateNote: "このサイトは Cookie を使いません。言語設定はこの端末のブラウザにのみ保存されます。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["森羅万象、", "百川帰海。"],
@@ -374,6 +375,29 @@ function getLocalizedField(value, locale = currentLocale) {
   }
 
   return value[locale] || value.tc || value.sc || "";
+}
+
+function isSupportedLocale(locale) {
+  return LOCALES.some((item) => item.code === locale);
+}
+
+function readStoredLocale() {
+  try {
+    const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+    return isSupportedLocale(storedLocale) ? storedLocale : "";
+  } catch {
+    return "";
+  }
+}
+
+function persistLocale(locale) {
+  if (!isSupportedLocale(locale)) {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  } catch {}
 }
 
 function shuffleArray(items) {
@@ -496,7 +520,6 @@ async function clearRuntimeState() {
   }
 
   try {
-    window.localStorage.clear();
     window.sessionStorage.clear();
   } catch {}
 
@@ -729,8 +752,15 @@ function refreshButtonLabels() {
   });
 }
 
-function setLocale(locale) {
-  currentLocale = COPY[locale] ? locale : "tc";
+function setLocale(locale, options = {}) {
+  const { persist = true } = options;
+
+  currentLocale = isSupportedLocale(locale) ? locale : "tc";
+
+  if (persist) {
+    persistLocale(currentLocale);
+  }
+
   const localeConfig = LOCALES.find((item) => item.code === currentLocale) || LOCALES[0];
   const copy = getCopy();
 
@@ -1011,13 +1041,20 @@ function openButtonTarget(button) {
 }
 
 async function init() {
-  document.body.classList.add("is-gate-open");
-
   buildGate();
   buildSelect();
   buildButtons();
-  setLocale("tc");
+  const storedLocale = readStoredLocale();
+
+  setLocale(storedLocale || "tc", { persist: false });
   clearRuntimeState();
+
+  if (storedLocale) {
+    closeGateAndStart();
+    return;
+  }
+
+  document.body.classList.add("is-gate-open");
 }
 
 if (window.location.hostname === APEX_HOST) {

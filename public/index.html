@@ -42,6 +42,29 @@
         }
       })();
     </script>
+    <script>
+      (function () {
+        var storedLocaleKey = "kara251:locale";
+        var localeLangMap = {
+          tc: "zh-Hant",
+          sc: "zh-Hans",
+          hx: "zh-Hant",
+          wy: "lzh",
+          en: "en",
+          yue: "yue",
+          ja: "ja"
+        };
+
+        try {
+          var storedLocale = window.localStorage.getItem(storedLocaleKey);
+
+          if (storedLocale && localeLangMap[storedLocale]) {
+            document.documentElement.dataset.localePersisted = "true";
+            document.documentElement.lang = localeLangMap[storedLocale];
+          }
+        } catch {}
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -89,11 +112,11 @@
         <p class="lang-gate-kicker" id="lang-gate-kicker">LANGUAGE INDEX</p>
         <h2 class="lang-gate-title" id="lang-gate-title">先選擇語言</h2>
         <p class="lang-gate-subtitle" id="lang-gate-subtitle">
-          每次進站都會先停在這裡，請先選擇語言再進入首頁。
+          首次進站時，請先選好語言；之後會自動沿用，也可以隨時再切換。
         </p>
         <div class="lang-gate-options" id="lang-gate-options"></div>
         <p class="lang-gate-note" id="lang-gate-note">
-          這個首頁不保留 cookie，也不記住語言偏好。
+          本站不使用 Cookie；語言偏好只會保存在你目前使用的瀏覽器中。
         </p>
         <div class="rule-double"></div>
       </div>
