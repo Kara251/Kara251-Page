@@ -17,7 +17,7 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-settle: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-glide: cubic-bezier(0.23, 0.84, 0.24, 1);
-  --button-boot-duration: 1760ms;
+  --button-boot-duration: 1560ms;
 }
 
 *,
@@ -818,11 +818,11 @@ body.is-started .hero-route {
 
 @keyframes button-copy-flip {
   0%,
-  58% {
+  52% {
     color: var(--button-white);
   }
 
-  80%,
+  74%,
   100% {
     color: #000000;
   }
@@ -972,12 +972,8 @@ body.is-started .hero-route {
     transform: translate3d(-90%, 0, 0);
   }
 
-  42% {
-    transform: translate3d(324%, 0, 0);
-  }
-
-  72% {
-    transform: translate3d(338%, 0, 0);
+  46% {
+    transform: translate3d(332%, 0, 0);
   }
 
   100% {
@@ -991,29 +987,30 @@ body.is-started .hero-route {
     transform: translate3d(-96%, 0, 0);
   }
 
-  16% {
+  12% {
     opacity: 0.68;
   }
 
-  48% {
-    opacity: 0.24;
-    transform: translate3d(228%, 0, 0);
+  44% {
+    opacity: 0.2;
+    transform: translate3d(236%, 0, 0);
   }
 
+  60%,
   100% {
     opacity: 0;
-    transform: translate3d(240%, 0, 0);
+    transform: translate3d(236%, 0, 0);
   }
 }
 
 @keyframes fill-x {
   0%,
-  46% {
+  38% {
     transform: scaleX(0);
   }
 
-  64% {
-    transform: scaleX(0.18);
+  54% {
+    transform: scaleX(0.16);
   }
 
   100% {
@@ -1026,12 +1023,8 @@ body.is-started .hero-route {
     transform: translate3d(0, -92%, 0);
   }
 
-  42% {
-    transform: translate3d(0, 326%, 0);
-  }
-
-  72% {
-    transform: translate3d(0, 340%, 0);
+  46% {
+    transform: translate3d(0, 334%, 0);
   }
 
   100% {
@@ -1045,29 +1038,30 @@ body.is-started .hero-route {
     transform: translate3d(0, -98%, 0);
   }
 
-  16% {
+  12% {
     opacity: 0.68;
   }
 
-  48% {
-    opacity: 0.24;
-    transform: translate3d(0, 228%, 0);
+  44% {
+    opacity: 0.2;
+    transform: translate3d(0, 236%, 0);
   }
 
+  60%,
   100% {
     opacity: 0;
-    transform: translate3d(0, 240%, 0);
+    transform: translate3d(0, 236%, 0);
   }
 }
 
 @keyframes fill-y {
   0%,
-  46% {
+  38% {
     transform: scaleY(0);
   }
 
-  64% {
-    transform: scaleY(0.18);
+  54% {
+    transform: scaleY(0.16);
   }
 
   100% {

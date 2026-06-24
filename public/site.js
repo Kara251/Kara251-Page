@@ -11,6 +11,7 @@ const LOCALES = [
 const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
+const BUTTON_BOOT_DURATION = 1560;
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
   "网站名称：",
@@ -829,7 +830,7 @@ function bootButtons() {
     window.setTimeout(() => {
       button.classList.remove("is-booting");
       button.classList.add("is-armed");
-    }, delay + 1760);
+    }, delay + BUTTON_BOOT_DURATION);
   });
 }
 
@@ -852,7 +853,7 @@ function bootFriendCards() {
     window.setTimeout(() => {
       card.classList.remove("is-booting");
       card.classList.add("is-armed");
-    }, delay + 1760);
+    }, delay + BUTTON_BOOT_DURATION);
   });
 }
 
