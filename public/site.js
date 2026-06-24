@@ -11,7 +11,7 @@ const LOCALES = [
 const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
-const BUTTON_BOOT_DURATION = 1560;
+const BUTTON_BOOT_DURATION = 1680;
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
   "网站名称：",
@@ -820,7 +820,7 @@ function bootButtons() {
   dom.linkGrid.classList.add("is-visible");
 
   dom.linkGrid.querySelectorAll(".portal-button").forEach((button, index) => {
-    const delay = index * 140;
+    const delay = index * 150;
 
     button.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -843,7 +843,7 @@ function bootFriendCards() {
   dom.friendShell.classList.add("is-visible");
 
   dom.friendShell.querySelectorAll(".friend-link-card").forEach((card, index) => {
-    const delay = index * 150;
+    const delay = index * 160;
 
     card.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -922,9 +922,9 @@ async function playHeroSequence({ replayButtons }) {
     dom.heroNote.classList.add("is-visible");
 
     if (replayButtons) {
-      window.setTimeout(() => bootButtons(), 220);
+      window.setTimeout(() => bootButtons(), 260);
     }
-  }, 220);
+  }, 240);
 }
 
 function closeGateAndStart() {
