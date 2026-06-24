@@ -855,6 +855,7 @@ body.is-started .hero-route {
 .portal-button-trail {
   position: absolute;
   pointer-events: none;
+  opacity: 0;
 }
 
 .portal-button-reveal {
@@ -882,7 +883,6 @@ body.is-started .hero-route {
 
 .portal-button-trail {
   z-index: 1;
-  opacity: 0.62;
   filter: blur(22px);
   will-change: transform, opacity;
 }
@@ -969,14 +969,25 @@ body.is-started .hero-route {
 
 @keyframes scan-x {
   0% {
+    opacity: 0;
     transform: translate3d(-90%, 0, 0);
   }
 
+  12% {
+    opacity: 0.88;
+  }
+
   48% {
+    opacity: 0.74;
     transform: translate3d(328%, 0, 0);
   }
 
+  76% {
+    opacity: 0.3;
+  }
+
   100% {
+    opacity: 0;
     transform: translate3d(-8%, 0, 0);
   }
 }
@@ -1020,14 +1031,25 @@ body.is-started .hero-route {
 
 @keyframes scan-y {
   0% {
+    opacity: 0;
     transform: translate3d(0, -92%, 0);
   }
 
+  12% {
+    opacity: 0.88;
+  }
+
   48% {
+    opacity: 0.74;
     transform: translate3d(0, 330%, 0);
   }
 
+  76% {
+    opacity: 0.3;
+  }
+
   100% {
+    opacity: 0;
     transform: translate3d(0, -8%, 0);
   }
 }
