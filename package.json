@@ -1,0 +1,15 @@
+{
+  "name": "kara251-page",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Static personal homepage for kara251.com deployed with Cloudflare Workers.",
+  "type": "module",
+  "scripts": {
+    "dev": "WRANGLER_LOG_PATH=.wrangler/logs wrangler dev",
+    "check": "WRANGLER_LOG_PATH=.wrangler/logs wrangler deploy --dry-run",
+    "deploy": "WRANGLER_LOG_PATH=.wrangler/logs wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
