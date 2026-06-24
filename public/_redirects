@@ -1,0 +1,4 @@
+/https / 302
+/https/* /:splat 302
+/http / 302
+/http/* /:splat 302
