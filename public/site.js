@@ -102,6 +102,21 @@ const FRIEND_LINKS = [
       ja: "思いや考えを分かち合い、音楽を探る ACG サイト"
     },
     logo: "https://forum.hanakos.cc/icons/icon-512.png"
+  },
+  {
+    title: "雨云",
+    domain: "www.rainyun.com/m1rror_?s=kara251.com",
+    href: "https://www.rainyun.com/m1rror_?s=kara251.com",
+    description: {
+      tc: "新用戶五折｜高性價比、穩定、便捷｜MC 面板服 / VPS / 一鍵部署",
+      sc: "新用户五折｜性价比高、稳定、便捷｜MC 面板服 / VPS / 一键部署",
+      hx: "新用戶五折｜性價比高、穩定、便捷｜MC 面板服 / VPS / 一鍵部署",
+      wy: "新客半價，價實而穩便｜MC 面板服 / VPS / 一鍵部署",
+      en: "50% off for new users | Cost-effective, stable, and convenient | MC panel hosting / VPS / one-click deployment",
+      yue: "新用戶五折｜高性價比、穩定、方便｜MC 面板服 / VPS / 一鍵部署",
+      ja: "新規ユーザー 50% オフ｜高コスパ・安定・手軽｜MC パネルサーバー / VPS / ワンクリックデプロイ"
+    },
+    logo: "https://www.rainyun.com/img/logo.d193755d.png"
   }
 ];
 
