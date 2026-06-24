@@ -106,16 +106,16 @@ const FRIEND_LINKS = [
   {
     title: "雨云",
     pinned: true,
-    domain: "www.rainyun.com/m1rror_?s=kara251.com",
+    domain: "www.rainyun.com",
     href: "https://www.rainyun.com/m1rror_?s=kara251.com",
     description: {
-      tc: "新用戶五折｜高性價比、穩定、便捷｜MC 面板服 / VPS / 一鍵部署",
-      sc: "新用户五折｜性价比高、稳定、便捷｜MC 面板服 / VPS / 一键部署",
-      hx: "新用戶五折｜性價比高、穩定、便捷｜MC 面板服 / VPS / 一鍵部署",
-      wy: "新客半價，價實而穩便｜MC 面板服 / VPS / 一鍵部署",
-      en: "50% off for new users | Cost-effective, stable, and convenient | MC panel hosting / VPS / one-click deployment",
-      yue: "新用戶五折｜高性價比、穩定、方便｜MC 面板服 / VPS / 一鍵部署",
-      ja: "新規ユーザー 50% オフ｜高コスパ・安定・手軽｜MC パネルサーバー / VPS / ワンクリックデプロイ"
+      tc: "新用戶5折 | 免費MC服 | 性價比、穩定、便捷 | MC面板服 / VPS / 應用一鍵部署",
+      sc: "新用户5折 | 免费MC服 | 性价比、稳定、便捷 | MC面板服 / VPS / 应用一键部署",
+      hx: "新用戶5折 | 免費MC服 | 性價比、穩定、便捷 | MC面板服 / VPS / 應用一鍵部署",
+      wy: "新客五折 | 免費MC服 | 價實、穩而便 | MC面板服 / VPS / 應用一鍵部署",
+      en: "50% off for new users | Free MC server | Cost-effective, stable, and convenient | MC panel hosting / VPS / one-click app deployment",
+      yue: "新用戶5折 | 免費MC服 | 性價比、穩定、便捷 | MC面板服 / VPS / 應用一鍵部署",
+      ja: "新規ユーザー5割引 | 無料MCサーバー | 高コスパ・安定・手軽 | MCパネルサーバー / VPS / アプリのワンクリックデプロイ"
     },
     logoEmoji: "🌧️"
   }
