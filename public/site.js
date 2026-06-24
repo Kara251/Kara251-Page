@@ -734,6 +734,30 @@ function clearTypeTimers() {
   typeTimer = 0;
 }
 
+function getTypeDelay(segment) {
+  if (!segment) {
+    return 84;
+  }
+
+  if (/[\u3002\uff01\uff1f.!?]/u.test(segment)) {
+    return 188;
+  }
+
+  if (/[\uff0c\u3001,;:：；]/u.test(segment)) {
+    return 136;
+  }
+
+  if (/\s/u.test(segment)) {
+    return 42;
+  }
+
+  if (/[A-Za-z0-9]/.test(segment)) {
+    return 72;
+  }
+
+  return 86;
+}
+
 function resetHeroLines() {
   dom.heroLine1.textContent = "";
   dom.heroLine2.textContent = "";
@@ -756,6 +780,7 @@ function typeLine(node, text, speed, token) {
         return;
       }
 
+      const segment = segments[index];
       node.textContent = segments.slice(0, index + 1).join("");
       index += 1;
 
@@ -765,7 +790,7 @@ function typeLine(node, text, speed, token) {
         return;
       }
 
-      typeTimer = window.setTimeout(step, speed);
+      typeTimer = window.setTimeout(step, Math.max(40, speed + getTypeDelay(segment) - 86));
     }
 
     step();
@@ -804,7 +829,7 @@ function bootButtons() {
     window.setTimeout(() => {
       button.classList.remove("is-booting");
       button.classList.add("is-armed");
-    }, delay + 1550);
+    }, delay + 1760);
   });
 }
 
@@ -827,7 +852,7 @@ function bootFriendCards() {
     window.setTimeout(() => {
       card.classList.remove("is-booting");
       card.classList.add("is-armed");
-    }, delay + 1550);
+    }, delay + 1760);
   });
 }
 
@@ -880,14 +905,14 @@ async function playHeroSequence({ replayButtons }) {
   }
 
   const token = typeSequenceToken;
-  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 96, token);
+  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 84, token);
 
   if (!firstDone) {
     return;
   }
 
   typeTimer = window.setTimeout(async () => {
-    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 96, token);
+    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 84, token);
 
     if (!secondDone || token !== typeSequenceToken) {
       return;
@@ -896,9 +921,9 @@ async function playHeroSequence({ replayButtons }) {
     dom.heroNote.classList.add("is-visible");
 
     if (replayButtons) {
-      window.setTimeout(() => bootButtons(), 170);
+      window.setTimeout(() => bootButtons(), 220);
     }
-  }, 160);
+  }, 220);
 }
 
 function closeGateAndStart() {
@@ -936,7 +961,7 @@ function openButtonTarget(button) {
     }
 
     button.classList.remove("is-leaving");
-  }, prefersReducedMotion ? 20 : 150);
+  }, prefersReducedMotion ? 20 : 180);
 }
 
 async function init() {
