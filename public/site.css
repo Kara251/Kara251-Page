@@ -977,13 +977,24 @@ body.is-started .hero-route {
     opacity: 0.88;
   }
 
-  48% {
-    opacity: 0.74;
+  46% {
+    opacity: 0.78;
     transform: translate3d(328%, 0, 0);
   }
 
-  76% {
-    opacity: 0.3;
+  54% {
+    opacity: 0.74;
+    transform: translate3d(332%, 0, 0);
+  }
+
+  74% {
+    opacity: 0.68;
+    transform: translate3d(156%, 0, 0);
+  }
+
+  90% {
+    opacity: 0.5;
+    transform: translate3d(24%, 0, 0);
   }
 
   100% {
@@ -1002,15 +1013,29 @@ body.is-started .hero-route {
     opacity: 0.56;
   }
 
-  48% {
-    opacity: 0.16;
+  46% {
+    opacity: 0.18;
     transform: translate3d(230%, 0, 0);
   }
 
-  60%,
+  58% {
+    opacity: 0.14;
+    transform: translate3d(236%, 0, 0);
+  }
+
+  74% {
+    opacity: 0.16;
+    transform: translate3d(112%, 0, 0);
+  }
+
+  92% {
+    opacity: 0.08;
+    transform: translate3d(-4%, 0, 0);
+  }
+
   100% {
     opacity: 0;
-    transform: translate3d(230%, 0, 0);
+    transform: translate3d(-18%, 0, 0);
   }
 }
 
@@ -1022,6 +1047,10 @@ body.is-started .hero-route {
 
   60% {
     transform: scaleX(0.14);
+  }
+
+  82% {
+    transform: scaleX(0.62);
   }
 
   100% {
@@ -1039,13 +1068,24 @@ body.is-started .hero-route {
     opacity: 0.88;
   }
 
-  48% {
-    opacity: 0.74;
+  46% {
+    opacity: 0.78;
     transform: translate3d(0, 330%, 0);
   }
 
-  76% {
-    opacity: 0.3;
+  54% {
+    opacity: 0.74;
+    transform: translate3d(0, 334%, 0);
+  }
+
+  74% {
+    opacity: 0.68;
+    transform: translate3d(0, 158%, 0);
+  }
+
+  90% {
+    opacity: 0.5;
+    transform: translate3d(0, 26%, 0);
   }
 
   100% {
@@ -1064,15 +1104,29 @@ body.is-started .hero-route {
     opacity: 0.56;
   }
 
-  48% {
-    opacity: 0.16;
+  46% {
+    opacity: 0.18;
     transform: translate3d(0, 230%, 0);
   }
 
-  60%,
+  58% {
+    opacity: 0.14;
+    transform: translate3d(0, 236%, 0);
+  }
+
+  74% {
+    opacity: 0.16;
+    transform: translate3d(0, 112%, 0);
+  }
+
+  92% {
+    opacity: 0.08;
+    transform: translate3d(0, -4%, 0);
+  }
+
   100% {
     opacity: 0;
-    transform: translate3d(0, 230%, 0);
+    transform: translate3d(0, -18%, 0);
   }
 }
 
@@ -1084,6 +1138,10 @@ body.is-started .hero-route {
 
   60% {
     transform: scaleY(0.14);
+  }
+
+  82% {
+    transform: scaleY(0.62);
   }
 
   100% {
