@@ -858,10 +858,12 @@ body.is-started .hero-route {
 }
 
 .portal-button-reveal {
+  position: absolute;
   inset: 0;
   z-index: 0;
   background: var(--button-white);
   opacity: 1;
+  pointer-events: none;
   transform: scaleX(0);
   will-change: transform;
 }
@@ -952,7 +954,7 @@ body.is-started .hero-route {
 }
 
 .portal-button.is-booting[data-axis="x"] .portal-button-reveal {
-  animation: fill-x var(--button-boot-duration) var(--ease-settle) forwards;
+  animation: fill-x var(--button-boot-duration) linear forwards;
 }
 
 .portal-button.is-booting[data-axis="y"] .portal-button-line {
@@ -964,7 +966,7 @@ body.is-started .hero-route {
 }
 
 .portal-button.is-booting[data-axis="y"] .portal-button-reveal {
-  animation: fill-y var(--button-boot-duration) var(--ease-settle) forwards;
+  animation: fill-y var(--button-boot-duration) linear forwards;
 }
 
 .portal-button.is-armed .portal-button-reveal {
@@ -1033,6 +1035,18 @@ body.is-started .hero-route {
     transform: scaleX(0.02);
   }
 
+  62% {
+    transform: scaleX(0.24);
+  }
+
+  74% {
+    transform: scaleX(0.5);
+  }
+
+  86% {
+    transform: scaleX(0.78);
+  }
+
   100% {
     transform: scaleX(1);
   }
@@ -1094,6 +1108,18 @@ body.is-started .hero-route {
 
   50% {
     transform: scaleY(0.02);
+  }
+
+  62% {
+    transform: scaleY(0.24);
+  }
+
+  74% {
+    transform: scaleY(0.5);
+  }
+
+  86% {
+    transform: scaleY(0.78);
   }
 
   100% {
