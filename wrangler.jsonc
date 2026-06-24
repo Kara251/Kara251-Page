@@ -1,27 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "kara251-page",
-  "main": "./worker.js",
   "compatibility_date": "2026-06-24",
-  "workers_dev": false,
-  "routes": [
-    {
-      "pattern": "www.kara251.com",
-      "custom_domain": true
-    },
-    {
-      "pattern": "kara251.com/*",
-      "zone_name": "kara251.com"
-    },
-    {
-      "pattern": "*.kara251.com/*",
-      "zone_name": "kara251.com"
-    }
-  ],
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
-    "not_found_handling": "404-page",
-    "run_worker_first": true
-  }
+  "pages_build_output_dir": "./public"
 }

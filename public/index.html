@@ -1,14 +1,89 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>kara251.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>www.kara251.com</title>
+    <meta
+      name="description"
+      content="Kara251 的個人站首頁，收納目前公開中的作品與對外入口。"
+    >
+    <meta property="og:title" content="www.kara251.com">
+    <meta
+      property="og:description"
+      content="Kara251 的個人站首頁，收納目前公開中的作品與對外入口。"
+    >
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="/site.css">
   </head>
   <body>
-    <main>
-      <h1>kara251.com</h1>
-      <p>Static homepage placeholder. Replace the files in /public with your site.</p>
+    <div
+      class="lang-gate"
+      id="lang-gate"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lang-gate-title"
+    >
+      <div class="lang-gate-panel">
+        <div class="rule-double"></div>
+        <p class="lang-gate-kicker" id="lang-gate-kicker">LANGUAGE INDEX</p>
+        <h2 class="lang-gate-title" id="lang-gate-title">先選擇語言</h2>
+        <p class="lang-gate-subtitle" id="lang-gate-subtitle">
+          每次進站都會先停在這裡，請先選擇語言再進入首頁。
+        </p>
+        <div class="lang-gate-options" id="lang-gate-options"></div>
+        <p class="lang-gate-note" id="lang-gate-note">
+          這個首頁不保留 cookie，也不記住語言偏好。
+        </p>
+        <div class="rule-double"></div>
+      </div>
+    </div>
+
+    <div class="language-control" id="language-control" hidden>
+      <label class="sr-only" for="lang-select">Language</label>
+      <select id="lang-select" class="lang-select" aria-label="Language"></select>
+    </div>
+
+    <div class="frame-lines" aria-hidden="true">
+      <span class="frame-line frame-line-top"></span>
+      <span class="frame-line frame-line-right"></span>
+      <span class="frame-line frame-line-bottom"></span>
+      <span class="frame-line frame-line-left"></span>
+    </div>
+
+    <div class="sweep-stage" aria-hidden="true">
+      <span class="sweep-word sweep-word-1">Veritas</span>
+      <span class="sweep-word sweep-word-2">Claritas</span>
+      <span class="sweep-word sweep-word-3">Amor</span>
+    </div>
+
+    <main class="site-main" id="site-main" aria-labelledby="hero-title">
+      <div class="hero-rail hero-rail-left" aria-hidden="true">www.kara251.com</div>
+      <div class="hero-rail hero-rail-right" aria-hidden="true">KARA251</div>
+
+      <section class="hero-shell">
+        <div class="hero-header">
+          <span class="hero-kicker" id="hero-kicker">PERSONAL INDEX</span>
+          <span class="hero-route" id="hero-route">www.kara251.com</span>
+        </div>
+
+        <div class="rule-double"></div>
+
+        <p class="hero-prelude" id="hero-prelude">靜觀其變，擇路而行。</p>
+
+        <h1 class="hero-title" id="hero-title" aria-live="polite">
+          <span class="hero-title-line" id="hero-line-1"></span>
+          <span class="hero-title-line" id="hero-line-2"></span>
+        </h1>
+
+        <p class="hero-note" id="hero-note">
+          個人站首頁，整理目前公開中的作品與對外入口。
+        </p>
+
+        <div class="link-grid" id="link-grid" aria-label="Outbound links"></div>
+      </section>
     </main>
+
+    <script src="/site.js" defer></script>
   </body>
 </html>

@@ -1,116 +1,118 @@
 # Kara251 Page
 
-这个仓库已经按“纯静态站 + Cloudflare Wrangler 部署”准备好了。
+这个仓库现在是纯静态首页，目标域名是 `www.kara251.com`，部署方式是 Cloudflare Pages。
 
-当前策略：
+## 技术栈
 
-- `www.kara251.com` 提供静态站内容
-- `kara251.com` 统一 `308` 跳到 `https://www.kara251.com`
-- `*.kara251.com` 也统一跳到 `https://www.kara251.com`
-- 站点静态文件统一放在 `public/`
+- 纯静态 HTML / CSS / JavaScript
+- `public/` 直接作为 Pages 输出目录
+- Wrangler 只负责本地预览和 Pages 部署
 
 ## 目录结构
 
 ```text
 .
-├── public/            # 你的静态站文件
-├── worker.js          # 只负责域名规范化和转发到静态资源
-├── wrangler.jsonc     # Cloudflare Wrangler 配置
+├── public/
+│   ├── index.html
+│   ├── 404.html
+│   ├── site.css
+│   ├── site.js
+│   └── _headers
+├── wrangler.jsonc
 ├── package.json
 └── README.md
 ```
 
-## 你后面怎么放站点
+## 当前页面特性
 
-直接把可发布的静态文件放进 `public/` 即可。
+- 纯黑背景
+- 三组轮廓大字扫屏：`Veritas`、`Claritas`、`Amor`
+- 主标题以打字机方式逐行出现
+- 首次进入强制语言选择
+- 不保存 cookie，不记住语言
+- 页面响应头设置为 `no-store`
+- 运行时会主动清理 storage、cache、service worker
+- 外链按钮点击后红框强调，再新开标签页跳转
 
-例如：
+## 语言支持
 
-- `public/index.html`
-- `public/assets/...`
-- `public/favicon.ico`
+当前沿用 `../material/exam-kara` 的语言集合：
 
-如果你以后改用某个静态生成器，也建议把最终产物输出到 `public/`，这样不用改部署流程。
+- `tc` 繁中
+- `sc` 简中
+- `hx` 火星文
+- `wy` 文言文
+- `en` English
+- `yue` 粵語
+- `ja` 日本語
 
-## 本地使用
+## 本地预览
 
-先安装依赖：
+安装依赖：
 
 ```bash
 npm install
 ```
 
-本地预览：
+启动本地预览：
 
 ```bash
 npm run dev
 ```
 
-部署前做一次本地检查：
+默认地址：
+
+```text
+http://127.0.0.1:4173
+```
+
+做一次脚本检查：
 
 ```bash
 npm run check
 ```
 
-正式部署：
+## Cloudflare Pages
 
-```bash
-npm run deploy
-```
+`wrangler.jsonc` 已经声明：
 
-Wrangler 日志会写到仓库内的 `.wrangler/logs/`，不会污染系统全局目录。
+- `name: kara251-page`
+- `pages_build_output_dir: ./public`
 
-## Cloudflare 准备
-
-### 1. 把 `kara251.com` 这个 zone 放到 Cloudflare
-
-这是前提，不然 Wrangler 的域名和路由配置不会生效。
-
-### 2. 登录 Wrangler
-
-二选一：
+首次部署前，先登录 Wrangler：
 
 ```bash
 npx wrangler login
 ```
 
-或者使用 API Token / Account ID 环境变量。
+然后把 `public/` 部署到 Pages：
 
-### 3. 为根域名和通配子域名准备 DNS
+```bash
+npm run deploy
+```
 
-因为 `www.kara251.com` 用的是 Custom Domain，Wrangler 首次部署时会自动创建对应 DNS 和证书。
+当前 `deploy` 脚本默认使用的 Pages 项目名是 `kara251-page`。如果你在线上实际创建的项目名不同，改一下 `package.json` 里的 `--project-name` 即可。
 
-但 `kara251.com/*` 和 `*.kara251.com/*` 这两个是 Route，Cloudflare 官方要求它们对应的域名本身也要有代理中的 DNS 记录，才能让请求进入 Worker。
+## 自定义域名说明
 
-建议在 Cloudflare DNS 里额外加这两条“占位但开启代理”的记录：
+这个仓库当前只负责 `www.kara251.com` 的静态页面本体。
 
-- `@` -> `192.0.2.0`，`Proxied`
-- `*` -> `192.0.2.0`，`Proxied`
+如果你还要继续把：
 
-也可以用 `AAAA` 指向 `100::`，效果一样。
+- `kara251.com`
+- `*.kara251.com`
 
-这些是 Cloudflare 官方文档里给 originless setup / redirect 用的保留占位地址，请求不会真的打到这个 IP。
+统一跳到 `www.kara251.com`，建议直接在 Cloudflare 的 Redirect Rules 里做，而不是在这个纯静态仓库里处理。
 
-## 当前 Wrangler 行为
+## 缓存与安全
 
-`wrangler.jsonc` 里已经配好：
+`public/_headers` 已经设置：
 
-- `www.kara251.com` 作为 Custom Domain
-- `kara251.com/*` 作为 Route
-- `*.kara251.com/*` 作为 Route
-- `public/` 作为静态资源目录
-- `run_worker_first: true`，确保先执行 Worker，再决定是否返回静态资源
-
-这一点很重要：如果不先跑 Worker，某些子域名请求可能会直接命中静态文件，而不会跳转到 `www`。
-
-## 部署后的预期结果
-
-- 访问 `https://www.kara251.com`：返回你的静态站
-- 访问 `https://kara251.com`：跳到 `https://www.kara251.com`
-- 访问 `https://anything.kara251.com/path?q=1`：跳到 `https://www.kara251.com/path?q=1`
-
-## 备注
-
-- 当前放了一个极简占位 `public/index.html`，只是为了让仓库开箱可用，你后面直接替换掉就行。
-- 当前用的是 `wrangler.jsonc`，因为 Cloudflare 现在对新项目推荐 JSONC 配置。
-- 不要把 `.dev.vars`、`.env` 一类文件提交进 Git。
+- `Cache-Control: no-store, no-cache, must-revalidate`
+- `Pragma: no-cache`
+- `Expires: 0`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `X-Frame-Options: SAMEORIGIN`
+- `Permissions-Policy`
+- `Cross-Origin-Opener-Policy: same-origin`
