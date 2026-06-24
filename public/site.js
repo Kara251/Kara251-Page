@@ -105,6 +105,7 @@ const FRIEND_LINKS = [
   },
   {
     title: "雨云",
+    pinned: true,
     domain: "www.rainyun.com/m1rror_?s=kara251.com",
     href: "https://www.rainyun.com/m1rror_?s=kara251.com",
     description: {
@@ -116,9 +117,11 @@ const FRIEND_LINKS = [
       yue: "新用戶五折｜高性價比、穩定、方便｜MC 面板服 / VPS / 一鍵部署",
       ja: "新規ユーザー 50% オフ｜高コスパ・安定・手軽｜MC パネルサーバー / VPS / ワンクリックデプロイ"
     },
-    logo: "https://www.rainyun.com/img/logo.d193755d.png"
+    logoEmoji: "🌧️"
   }
 ];
+
+const ORDERED_FRIEND_LINKS = orderFriendLinks(FRIEND_LINKS);
 
 const COPY = {
   tc: {
@@ -371,6 +374,39 @@ function getLocalizedField(value, locale = currentLocale) {
   }
 
   return value[locale] || value.tc || value.sc || "";
+}
+
+function shuffleArray(items) {
+  const shuffled = [...items];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+
+  return shuffled;
+}
+
+function orderFriendLinks(items) {
+  const pinnedLinks = items.filter((item) => item.pinned);
+  const randomLinks = shuffleArray(items.filter((item) => !item.pinned));
+  return [...pinnedLinks, ...randomLinks];
+}
+
+function renderFriendLinkLogo(friendLink) {
+  if (friendLink.logoEmoji) {
+    return `<span class="friend-link-logo-emoji" role="img" aria-label="${friendLink.title} logo">${friendLink.logoEmoji}</span>`;
+  }
+
+  return `
+    <img
+      class="friend-link-logo"
+      src="${friendLink.logo}"
+      alt="${friendLink.title} logo"
+      loading="lazy"
+      decoding="async"
+    >
+  `;
 }
 
 function segmentText(text) {
@@ -638,7 +674,7 @@ function buildFriendSection() {
 
   dom.friendGrid.innerHTML = "";
 
-  FRIEND_LINKS.forEach((friendLink) => {
+  ORDERED_FRIEND_LINKS.forEach((friendLink) => {
     const button = document.createElement("button");
     const description = getLocalizedField(friendLink.description);
     button.type = "button";
@@ -655,13 +691,7 @@ function buildFriendSection() {
       <span class="portal-button-trail"></span>
       <span class="portal-button-copy friend-card-copy">
         <span class="friend-link-logo-shell">
-          <img
-            class="friend-link-logo"
-            src="${friendLink.logo}"
-            alt="${friendLink.title} logo"
-            loading="lazy"
-            decoding="async"
-          >
+          ${renderFriendLinkLogo(friendLink)}
         </span>
         <span class="friend-link-body">
           <span class="friend-card-kicker">${copy.friendLinksTitle}</span>
