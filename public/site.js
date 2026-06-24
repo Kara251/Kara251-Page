@@ -54,7 +54,7 @@ const BUTTONS = [
 const COPY = {
   tc: {
     pageTitle: "www.kara251.com",
-    metaDescription: "Kara251 的個人站首頁，收納目前公開中的作品與對外入口。",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先選擇語言",
     gateSubtitle: "每次進站都會先停在這裡，請先選擇語言再進入首頁。",
@@ -63,12 +63,12 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "靜觀其變，擇路而行。",
     heroLines: ["森羅萬象，", "海納百川。"],
-    heroNote: "個人站首頁，整理目前公開中的作品與對外入口。",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "於新分頁開啟"
   },
   sc: {
     pageTitle: "www.kara251.com",
-    metaDescription: "Kara251 的个人站首页，收纳目前公开中的作品与对外入口。",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先选择语言",
     gateSubtitle: "每次进站都会先停在这里，请先选择语言再进入首页。",
@@ -77,12 +77,12 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "静观其变，择路而行。",
     heroLines: ["森罗万象，", "海纳百川。"],
-    heroNote: "个人站首页，整理目前公开中的作品与对外入口。",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "于新标签页打开"
   },
   hx: {
     pageTitle: "www.kara251.com",
-    metaDescription: "Kara251 の個人站首頁，把而家公開緊の作品同對外入口整理埋喺度。",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先揀語言版本",
     gateSubtitle: "每次進站都會先卡喺呢度，揀完語言先正式進首頁。",
@@ -91,12 +91,12 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "靜靜看變化，揀好路再走。",
     heroLines: ["森羅萬象，", "海納百川。"],
-    heroNote: "個人站首頁，整理而家公開緊の作品同對外入口。",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "新分頁打開"
   },
   wy: {
     pageTitle: "www.kara251.com",
-    metaDescription: "Kara251 個人首頁也，今所公開之作與對外之門，略整於此。",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "請先擇其言",
     gateSubtitle: "每次入站，皆先止於此；擇其言，而後入首頁。",
@@ -105,12 +105,12 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "審勢而行，擇路而進。",
     heroLines: ["森羅萬象，", "海納百川。"],
-    heroNote: "此為個人首頁，略整今所公開之作與對外之門。",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "新頁開之"
   },
   en: {
     pageTitle: "www.kara251.com",
-    metaDescription: "A personal index for the works and public windows Kara251 currently keeps open.",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "Choose a language first",
     gateSubtitle: "Every visit stops here first. Pick a language, then enter the site.",
@@ -119,12 +119,12 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "Watch the shift, then choose the road.",
     heroLines: ["森羅萬象，", "海納百川。"],
-    heroNote: "A personal index of the works and public windows currently kept open.",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "Open in a new tab"
   },
   yue: {
     pageTitle: "www.kara251.com",
-    metaDescription: "Kara251 嘅個人站首頁，整理而家公開緊嘅作品同對外入口。",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先揀語言",
     gateSubtitle: "每次入站都會先停喺呢度，揀好語言先入首頁。",
@@ -133,12 +133,12 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "睇清變化，再揀條路行。",
     heroLines: ["森羅萬象，", "海納百川。"],
-    heroNote: "呢度係個人站首頁，整理而家公開緊嘅作品同對外入口。",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "用新分頁打開"
   },
   ja: {
     pageTitle: "www.kara251.com",
-    metaDescription: "Kara251 が現在公開している制作物と外部窓口をまとめた個人トップページ。",
+    metaDescription: "Dr.Huang, aka Kara251",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先に言語を選んでください",
     gateSubtitle: "このページは毎回ここから始まります。言語を選んでからトップへ入ってください。",
@@ -147,7 +147,7 @@ const COPY = {
     heroRoute: "www.kara251.com",
     heroPrelude: "移ろいを見て、道を選ぶ。",
     heroLines: ["森羅萬象，", "海納百川。"],
-    heroNote: "公開中の制作物と外部窓口をまとめた個人トップページです。",
+    heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "新しいタブで開く"
   }
 };
