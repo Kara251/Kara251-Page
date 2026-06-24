@@ -1,0 +1,20 @@
+# Kara251 Landing Page
+
+> Canonical homepage for Dr.Huang, aka Kara251.
+
+- Canonical URL: https://www.kara251.com/
+- Theme: Academy x Youth x Story
+- Languages: zh-Hant, zh-Hans, lzh, en, yue, ja
+
+## Primary Links
+
+- Schale Library: https://www.bakivo.com/
+- EXAM KARA: https://exam.kara251.com/
+- Turing Mirror: https://tmc.kara251.com/
+- GitHub: https://github.com/Kara251
+- X: https://x.com/karakara0251
+
+## Contact
+
+- Email: kara@bakivo.com
+- X: https://x.com/karakara0251

@@ -28,11 +28,13 @@
 - 纯黑背景
 - 三组轮廓大字扫屏：`Veritas`、`Claritas`、`Amor`
 - 主标题以打字机方式逐行出现
-- 首次进入强制语言选择
+- 首次进入强制语言选择，并覆盖 `tc` / `sc` / `hx` / `wy` / `en` / `yue` / `ja`
 - 不保存 cookie，不记住语言
 - 页面响应头设置为 `no-store`
 - 运行时会主动清理 storage、cache、service worker
 - 外链按钮点击后红框强调，再新开标签页跳转
+- `kara251.com` 会跳转到 `https://www.kara251.com`
+- 已补齐 `robots.txt`、`sitemap.xml`、`llms.txt` 与结构化数据，方便 SEO / GEO
 
 ## 语言支持
 
@@ -95,14 +97,17 @@ npm run deploy
 
 ## 自定义域名说明
 
-这个仓库当前只负责 `www.kara251.com` 的静态页面本体。
+这个仓库现在内建了 apex 规范域跳转逻辑：
 
-如果你还要继续把：
+- 如果请求已经落到这个 Pages 项目上，且域名是 `kara251.com`
+- 页面会立刻跳转到 `https://www.kara251.com`，并保留原路径、查询参数和 hash
 
+要让这件事真正在线上生效，还需要 Cloudflare Pages 把这些域名接到同一个项目：
+
+- `www.kara251.com`
 - `kara251.com`
-- `*.kara251.com`
 
-统一跳到 `www.kara251.com`，建议直接在 Cloudflare 的 Redirect Rules 里做，而不是在这个纯静态仓库里处理。
+如果 Cloudflare 后台里自定义域名状态还是 `pending`，说明 DNS 或证书验证还没完全结束；仓库代码已经能处理跳转，但域名本身仍要在 Pages 侧接通。
 
 ## 缓存与安全
 
