@@ -14,40 +14,35 @@ const BUTTONS = [
     subtitle: "夏莱图书馆",
     domain: "www.bakivo.com",
     href: "https://www.bakivo.com",
-    axis: "x",
-    size: "large"
+    axis: "x"
   },
   {
     title: "EXAM KARA",
     subtitle: "卡拉测试",
     domain: "exam.kara251.com",
     href: "https://exam.kara251.com",
-    axis: "x",
-    size: "large"
+    axis: "x"
   },
   {
     title: "Turing Mirror",
     subtitle: "图灵镜",
     domain: "tmc.kara251.com",
     href: "https://tmc.kara251.com",
-    axis: "x",
-    size: "large"
+    axis: "x"
   },
   {
     title: "GitHub",
     subtitle: "Kara251",
     domain: "github.com/Kara251",
     href: "https://github.com/Kara251",
-    axis: "y",
-    size: "small"
+    axis: "x"
   },
   {
     title: "X",
     subtitle: "@karakara0251",
     domain: "x.com/karakara0251",
     href: "https://x.com/karakara0251",
-    axis: "y",
-    size: "small"
+    axis: "x"
   }
 ];
 
@@ -256,11 +251,6 @@ function buildSelect() {
 
 function buildButtons() {
   dom.linkGrid.innerHTML = "";
-  const xLane = document.createElement("div");
-  const yLane = document.createElement("div");
-
-  xLane.className = "portal-lane portal-lane-x";
-  yLane.className = "portal-lane portal-lane-y";
 
   BUTTONS.forEach((buttonConfig, index) => {
     const button = document.createElement("button");
@@ -268,7 +258,6 @@ function buildButtons() {
     button.type = "button";
     button.className = "portal-button";
     button.dataset.axis = buttonConfig.axis;
-    button.dataset.size = buttonConfig.size;
     button.dataset.href = buttonConfig.href;
     button.setAttribute(
       "aria-label",
@@ -285,15 +274,9 @@ function buildButtons() {
       </span>
     `;
     button.addEventListener("click", () => openButtonTarget(button));
-
-    if (buttonConfig.axis === "y") {
-      yLane.append(button);
-    } else {
-      xLane.append(button);
-    }
+    button.style.setProperty("--boot-delay", `${index * 110}ms`);
+    dom.linkGrid.append(button);
   });
-
-  dom.linkGrid.append(xLane, yLane);
 }
 
 function refreshButtonLabels() {
