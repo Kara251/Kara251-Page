@@ -257,17 +257,17 @@ select {
   left: var(--rest-x);
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(3rem, 11vw, 11rem);
+  font-size: clamp(2.75rem, 7.8vw, 7.35rem);
   font-weight: 900;
-  letter-spacing: -0.05em;
-  line-height: 0.9;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
   text-transform: uppercase;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--outline);
-  text-shadow: 0 0 18px var(--outline-glow);
+  -webkit-text-stroke: 1.7px rgba(244, 244, 241, 0.66);
+  text-shadow: 0 0 14px rgba(244, 244, 241, 0.16), 0 0 28px rgba(244, 244, 241, 0.08);
   opacity: 0;
-  transform: translateX(-20vw);
+  transform: translateX(-14vw);
   clip-path: inset(0 100% 0 0);
   will-change: clip-path, opacity, transform;
 }
@@ -275,44 +275,44 @@ select {
 .sweep-word::after {
   content: "";
   position: absolute;
-  top: -24%;
-  left: -18%;
-  width: 30%;
-  height: 148%;
+  top: -20%;
+  left: -12%;
+  width: 24%;
+  height: 142%;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.22) 24%,
+    rgba(255, 255, 255, 0.24) 24%,
     rgba(255, 255, 255, 0.92) 52%,
-    rgba(255, 255, 255, 0.16) 76%,
+    rgba(255, 255, 255, 0.2) 76%,
     rgba(255, 255, 255, 0) 100%
   );
   opacity: 0;
-  filter: blur(18px);
+  filter: blur(14px);
   transform: translateX(-165%);
   mix-blend-mode: screen;
   will-change: opacity, transform;
 }
 
 .sweep-word-1 {
-  top: 10vh;
-  --rest-x: 3vw;
-  --word-opacity: 0.26;
-  --word-flash-opacity: 0.44;
+  top: 13vh;
+  --rest-x: 6vw;
+  --word-opacity: 0.36;
+  --word-flash-opacity: 0.58;
 }
 
 .sweep-word-2 {
-  top: 39vh;
-  --rest-x: 8vw;
-  --word-opacity: 0.22;
-  --word-flash-opacity: 0.38;
+  top: 28vh;
+  --rest-x: 11vw;
+  --word-opacity: 0.32;
+  --word-flash-opacity: 0.52;
 }
 
 .sweep-word-3 {
-  top: 68vh;
-  --rest-x: 15vw;
-  --word-opacity: 0.18;
-  --word-flash-opacity: 0.34;
+  top: 43vh;
+  --rest-x: 16vw;
+  --word-opacity: 0.28;
+  --word-flash-opacity: 0.46;
 }
 
 body.is-started .sweep-word-1 {
@@ -614,7 +614,18 @@ body.is-started .hero-route {
   min-height: 0;
 }
 
+.friend-self-card {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding: 18px 20px 20px;
+  border: 1px solid var(--line-strong);
+  background: var(--button-white);
+  color: #000000;
+}
+
 .friend-card-copy {
+  display: grid;
   gap: 16px;
 }
 
@@ -1174,20 +1185,23 @@ body.is-started .hero-route {
   }
 
   .sweep-word {
-    font-size: clamp(2.2rem, 16vw, 5rem);
-    -webkit-text-stroke-width: 1.1px;
+    font-size: clamp(2.15rem, 11vw, 4.1rem);
+    -webkit-text-stroke-width: 1.25px;
   }
 
   .sweep-word-1 {
-    top: 12vh;
+    top: 14vh;
+    --rest-x: 4vw;
   }
 
   .sweep-word-2 {
-    top: 41vh;
+    top: 26vh;
+    --rest-x: 8vw;
   }
 
   .sweep-word-3 {
-    top: 70vh;
+    top: 38vh;
+    --rest-x: 12vw;
   }
 }
 

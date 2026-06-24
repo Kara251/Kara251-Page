@@ -8,6 +8,7 @@ const LOCALES = [
   { code: "ja", label: "日本語", htmlLang: "ja", script: "cjk" }
 ];
 
+const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
@@ -105,12 +106,12 @@ const FRIEND_LINKS = [
 
 const COPY = {
   tc: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page。學園 × 青春 × 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
-    gateTitle: "先選擇語言",
-    gateSubtitle: "每次進站都會先停在這裡，請先選擇語言再進入首頁。",
-    gateNote: "這個首頁不保留 cookie，也不記住語言偏好。",
+    gateTitle: "請先選擇語言",
+    gateSubtitle: "每次進站都會先停在這裡，請先選好語言，再進入首頁。",
+    gateNote: "這個首頁不會保留 Cookie，也不會記住語言偏好。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["森羅萬象，", "海納百川。"],
@@ -119,7 +120,7 @@ const COPY = {
     outboundLinksLabel: "對外連結",
     openNewTab: "於新分頁開啟",
     friendSectionTitle: "友情連結",
-    friendSelfTitle: "我的交換友鏈資訊",
+    friendSelfTitle: "本站交換友鏈資訊",
     friendLinksTitle: "友情連結",
     friendNameLabel: "網站名稱",
     friendUrlLabel: "網站地址",
@@ -129,12 +130,12 @@ const COPY = {
     friendLogoEmpty: "暫無",
     copySiteUrlAction: "複製網站地址",
     copySiteUrlDone: "已複製站址",
-    copyEmailAction: "複製郵箱並開啟郵件",
-    copyEmailDone: "已複製並開啟郵件",
-    openFriendLink: "開啟友鏈"
+    copyEmailAction: "複製信箱並開啟郵件",
+    copyEmailDone: "已複製信箱並開啟郵件",
+    openFriendLink: "開啟友站連結"
   },
   sc: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page。学园 × 青春 × 物语。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先选择语言",
@@ -148,7 +149,7 @@ const COPY = {
     outboundLinksLabel: "对外链接",
     openNewTab: "于新标签页打开",
     friendSectionTitle: "友情链接",
-    friendSelfTitle: "我的交换友链信息",
+    friendSelfTitle: "本站交换友链信息",
     friendLinksTitle: "友情链接",
     friendNameLabel: "网站名称",
     friendUrlLabel: "网站地址",
@@ -163,7 +164,7 @@ const COPY = {
     openFriendLink: "打开友链"
   },
   hx: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page。學園 × 青春 × 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先揀語言版本",
@@ -192,7 +193,7 @@ const COPY = {
     openFriendLink: "打開友鏈"
   },
   wy: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page。學園、青春、物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "請先擇其言",
@@ -221,11 +222,11 @@ const COPY = {
     openFriendLink: "開友鏈"
   },
   en: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page. Academy x Youth x Story. Dr.Huang, aka Kara251.",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "Choose a language first",
-    gateSubtitle: "Every visit stops here first. Pick a language, then enter the site.",
+    gateSubtitle: "Every visit starts here first. Choose a language, then enter the site.",
     gateNote: "This page keeps no cookies and does not remember language choices.",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
@@ -235,7 +236,7 @@ const COPY = {
     outboundLinksLabel: "Outbound links",
     openNewTab: "Open in a new tab",
     friendSectionTitle: "Friend Links",
-    friendSelfTitle: "My Link Exchange Info",
+    friendSelfTitle: "Link Exchange Details",
     friendLinksTitle: "Friend Links",
     friendNameLabel: "Site Name",
     friendUrlLabel: "Site URL",
@@ -245,17 +246,17 @@ const COPY = {
     friendLogoEmpty: "None yet",
     copySiteUrlAction: "Copy site URL",
     copySiteUrlDone: "URL copied",
-    copyEmailAction: "Copy email and open mail app",
+    copyEmailAction: "Copy email and open the mail app",
     copyEmailDone: "Email copied and mail opened",
-    openFriendLink: "Open friend link"
+    openFriendLink: "Open external link"
   },
   yue: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page。學園 × 青春 × 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先揀語言",
     gateSubtitle: "每次入站都會先停喺呢度，揀好語言先入首頁。",
-    gateNote: "呢個首頁唔留 cookie，亦都唔會記住語言偏好。",
+    gateNote: "呢個首頁唔會留 Cookie，亦都唔會記住語言偏好。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
     heroLines: ["千般萬象，", "百川歸海。"],
@@ -264,7 +265,7 @@ const COPY = {
     outboundLinksLabel: "對外連結",
     openNewTab: "用新分頁打開",
     friendSectionTitle: "友情連結",
-    friendSelfTitle: "我嘅交換友鏈資料",
+    friendSelfTitle: "本站交換友鏈資料",
     friendLinksTitle: "友情連結",
     friendNameLabel: "網站名稱",
     friendUrlLabel: "網站地址",
@@ -274,12 +275,12 @@ const COPY = {
     friendLogoEmpty: "暫時未有",
     copySiteUrlAction: "複製網站地址",
     copySiteUrlDone: "已複製站址",
-    copyEmailAction: "複製電郵並打開郵件",
-    copyEmailDone: "已複製並開啟郵件",
-    openFriendLink: "打開友鏈"
+    copyEmailAction: "複製電郵地址並打開郵件",
+    copyEmailDone: "已複製電郵並開啟郵件",
+    openFriendLink: "打開友站連結"
   },
   ja: {
-    pageTitle: "www.kara251.com",
+    pageTitle: SITE_TITLE,
     metaDescription: "Kara251 Landing Page. 学園 x 青春 x 物語。Dr.Huang, aka Kara251。",
     gateKicker: "LANGUAGE INDEX",
     gateTitle: "先に言語を選んでください",
@@ -293,11 +294,11 @@ const COPY = {
     outboundLinksLabel: "外部リンク",
     openNewTab: "新しいタブで開く",
     friendSectionTitle: "相互リンク",
-    friendSelfTitle: "こちらの相互リンク情報",
+    friendSelfTitle: "当サイトの相互リンク情報",
     friendLinksTitle: "相互リンク",
     friendNameLabel: "サイト名",
     friendUrlLabel: "サイトURL",
-    friendSummaryLabel: "サイト紹介",
+    friendSummaryLabel: "サイト概要",
     friendLogoLabel: "LOGO",
     friendContactLabel: "連絡先",
     friendLogoEmpty: "未設定",
@@ -537,14 +538,12 @@ function buildFriendSection() {
   dom.friendShell.setAttribute("aria-label", copy.friendSectionTitle);
   dom.friendGrid.setAttribute("aria-label", copy.friendLinksTitle);
 
-  dom.friendSelfCard.className = "friend-card portal-button";
-  dom.friendSelfCard.dataset.axis = "x";
+  dom.friendSelfCard.className = "friend-card friend-self-card";
+  dom.friendSelfCard.removeAttribute("data-axis");
   dom.friendSelfCard.removeAttribute("data-href");
+  dom.friendSelfCard.setAttribute("aria-label", copy.friendSelfTitle);
   dom.friendSelfCard.innerHTML = `
-    <span class="portal-button-reveal"></span>
-    <span class="portal-button-line"></span>
-    <span class="portal-button-trail"></span>
-    <div class="portal-button-copy friend-card-copy">
+    <div class="friend-card-copy">
       <div class="friend-card-header">
         <div>
           <p class="friend-card-kicker">${copy.friendSelfTitle}</p>
@@ -785,7 +784,7 @@ function setButtonsFinalState() {
 function setFriendCardsFinalState() {
   dom.friendShell.classList.add("is-visible");
 
-  dom.friendShell.querySelectorAll(".friend-card").forEach((card) => {
+  dom.friendShell.querySelectorAll(".friend-link-card").forEach((card) => {
     card.classList.remove("is-booting");
     card.classList.add("is-armed");
   });
@@ -817,7 +816,7 @@ function bootFriendCards() {
   friendCardsActivated = true;
   dom.friendShell.classList.add("is-visible");
 
-  dom.friendShell.querySelectorAll(".friend-card").forEach((card, index) => {
+  dom.friendShell.querySelectorAll(".friend-link-card").forEach((card, index) => {
     const delay = index * 150;
 
     card.classList.remove("is-armed", "is-leaving");
