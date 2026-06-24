@@ -61,7 +61,6 @@ const COPY = {
     gateNote: "這個首頁不保留 cookie，也不記住語言偏好。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "靜觀其變，擇路而行。",
     heroLines: ["森羅萬象，", "海納百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "於新分頁開啟"
@@ -75,7 +74,6 @@ const COPY = {
     gateNote: "这个首页不保留 cookie，也不记住语言偏好。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "静观其变，择路而行。",
     heroLines: ["森罗万象，", "海纳百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "于新标签页打开"
@@ -89,7 +87,6 @@ const COPY = {
     gateNote: "呢個首頁卟留 cookie，也卟記語言偏好。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "靜靜看變化，揀好路再走。",
     heroLines: ["森羅萬象，", "海納百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "新分頁打開"
@@ -103,7 +100,6 @@ const COPY = {
     gateNote: "此頁不留 cookie，亦不記汝前所擇之語。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "審勢而行，擇路而進。",
     heroLines: ["森羅萬象，", "海納百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "新頁開之"
@@ -117,7 +113,6 @@ const COPY = {
     gateNote: "This page keeps no cookies and does not remember language choices.",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "Watch the shift, then choose the road.",
     heroLines: ["森羅萬象，", "海納百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "Open in a new tab"
@@ -131,7 +126,6 @@ const COPY = {
     gateNote: "呢個首頁唔留 cookie，亦都唔會記住語言偏好。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "睇清變化，再揀條路行。",
     heroLines: ["森羅萬象，", "海納百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "用新分頁打開"
@@ -145,7 +139,6 @@ const COPY = {
     gateNote: "このページは cookie を保持せず、言語設定も保存しません。",
     heroKicker: "PERSONAL INDEX",
     heroRoute: "www.kara251.com",
-    heroPrelude: "移ろいを見て、道を選ぶ。",
     heroLines: ["森羅萬象，", "海納百川。"],
     heroNote: "Dr.Huang, aka Kara251",
     openNewTab: "新しいタブで開く"
@@ -163,7 +156,6 @@ const dom = {
   langSelect: document.getElementById("lang-select"),
   heroKicker: document.getElementById("hero-kicker"),
   heroRoute: document.getElementById("hero-route"),
-  heroPrelude: document.getElementById("hero-prelude"),
   heroLine1: document.getElementById("hero-line-1"),
   heroLine2: document.getElementById("hero-line-2"),
   heroNote: document.getElementById("hero-note"),
@@ -264,6 +256,11 @@ function buildSelect() {
 
 function buildButtons() {
   dom.linkGrid.innerHTML = "";
+  const xLane = document.createElement("div");
+  const yLane = document.createElement("div");
+
+  xLane.className = "portal-lane portal-lane-x";
+  yLane.className = "portal-lane portal-lane-y";
 
   BUTTONS.forEach((buttonConfig, index) => {
     const button = document.createElement("button");
@@ -288,9 +285,15 @@ function buildButtons() {
       </span>
     `;
     button.addEventListener("click", () => openButtonTarget(button));
-    button.style.setProperty("--boot-delay", `${index * 120}ms`);
-    dom.linkGrid.append(button);
+
+    if (buttonConfig.axis === "y") {
+      yLane.append(button);
+    } else {
+      xLane.append(button);
+    }
   });
+
+  dom.linkGrid.append(xLane, yLane);
 }
 
 function refreshButtonLabels() {
@@ -332,7 +335,6 @@ function setLocale(locale) {
   dom.gateNote.textContent = copy.gateNote;
   dom.heroKicker.textContent = copy.heroKicker;
   dom.heroRoute.textContent = copy.heroRoute;
-  dom.heroPrelude.textContent = copy.heroPrelude;
   dom.heroNote.textContent = copy.heroNote;
   dom.langSelect.value = currentLocale;
   refreshButtonLabels();

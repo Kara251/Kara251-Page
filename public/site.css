@@ -433,15 +433,13 @@ body.is-started .sweep-word-3::after {
 }
 
 .hero-kicker,
-.hero-route,
-.hero-prelude {
+.hero-route {
   opacity: 0;
   transform: translateY(14px);
 }
 
 body.is-started .hero-kicker,
-body.is-started .hero-route,
-body.is-started .hero-prelude {
+body.is-started .hero-route {
   animation: soft-rise 560ms ease forwards;
 }
 
@@ -453,10 +451,6 @@ body.is-started .hero-route {
   animation-delay: 1120ms;
 }
 
-body.is-started .hero-prelude {
-  animation-delay: 1240ms;
-}
-
 @keyframes soft-rise {
   to {
     opacity: 1;
@@ -464,17 +458,10 @@ body.is-started .hero-prelude {
   }
 }
 
-.hero-prelude {
-  margin: 34px 0 0;
-  color: var(--text-soft);
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-}
-
 .hero-title {
   display: grid;
   gap: 8px;
-  margin: 16px 0 0;
+  margin: 34px 0 0;
   font-family: var(--font-serif);
   font-size: clamp(2.7rem, 7.6vw, 6.5rem);
   font-weight: 700;
@@ -527,9 +514,9 @@ body.is-started .hero-prelude {
 
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 34px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(220px, 0.82fr);
+  gap: 14px;
+  margin-top: 36px;
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 300ms ease, transform 300ms ease;
@@ -538,6 +525,16 @@ body.is-started .hero-prelude {
 .link-grid.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.portal-lane {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.portal-lane-y {
+  grid-template-columns: 1fr;
 }
 
 .portal-button {
@@ -558,13 +555,12 @@ body.is-started .hero-prelude {
   transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
 
-.portal-button[data-size="large"] {
-  grid-column: span 6;
+.portal-lane-x .portal-button {
+  min-height: 118px;
 }
 
-.portal-button[data-size="small"] {
-  grid-column: span 3;
-  min-height: 104px;
+.portal-lane-y .portal-button {
+  min-height: 186px;
 }
 
 .portal-button.is-armed {
@@ -591,6 +587,22 @@ body.is-started .hero-prelude {
   z-index: 2;
   display: grid;
   gap: 6px;
+}
+
+.portal-button.is-booting .portal-button-copy {
+  animation: button-copy-flip 1550ms linear forwards;
+}
+
+@keyframes button-copy-flip {
+  0%,
+  56% {
+    color: var(--button-white);
+  }
+
+  72%,
+  100% {
+    color: #000000;
+  }
 }
 
 .portal-button-title {
@@ -627,6 +639,7 @@ body.is-started .hero-prelude {
   z-index: 0;
   background: var(--button-white);
   transform: scaleX(0);
+  will-change: transform;
 }
 
 .portal-button[data-axis="x"] .portal-button-reveal {
@@ -641,44 +654,70 @@ body.is-started .hero-prelude {
 .portal-button-line {
   z-index: 1;
   background: rgba(255, 255, 255, 0.98);
+  will-change: transform, opacity;
 }
 
 .portal-button-trail {
   z-index: 1;
   opacity: 0.78;
-  filter: blur(16px);
+  filter: blur(18px);
+  will-change: transform, opacity;
 }
 
 .portal-button[data-axis="x"] .portal-button-line {
   top: -1px;
-  left: 0;
-  width: 28%;
+  left: -24%;
+  width: 32%;
   height: calc(100% + 2px);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96) 52%, rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.18) 26%,
+    rgba(255, 255, 255, 0.98) 54%,
+    rgba(255, 255, 255, 0.2) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .portal-button[data-axis="x"] .portal-button-trail {
-  top: 14%;
-  left: 0;
-  width: 44%;
-  height: 72%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.28) 42%, rgba(255, 255, 255, 0));
+  top: 18%;
+  left: -36%;
+  width: 52%;
+  height: 64%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .portal-button[data-axis="y"] .portal-button-line {
-  top: 0;
+  top: -28%;
   left: -1px;
   width: calc(100% + 2px);
-  height: 30%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96) 50%, rgba(255, 255, 255, 0));
+  height: 26%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.16) 24%,
+    rgba(255, 255, 255, 0.98) 50%,
+    rgba(255, 255, 255, 0.2) 76%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .portal-button[data-axis="y"] .portal-button-trail {
-  top: 0;
-  left: 14%;
-  width: 72%;
-  height: 44%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.28) 42%, rgba(255, 255, 255, 0));
+  top: -36%;
+  left: 16%;
+  width: 68%;
+  height: 52%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .portal-button.is-booting[data-axis="x"] .portal-button-line {
@@ -707,47 +746,47 @@ body.is-started .hero-prelude {
 
 @keyframes scan-x {
   0% {
-    transform: translateX(-125%);
+    transform: translateX(-90%);
   }
 
-  50% {
-    transform: translateX(360%);
+  48% {
+    transform: translateX(348%);
   }
 
   100% {
-    transform: translateX(-12%);
+    transform: translateX(-8%);
   }
 }
 
 @keyframes trail-x {
   0% {
     opacity: 0;
-    transform: translateX(-130%);
+    transform: translateX(-96%);
   }
 
   14% {
     opacity: 0.72;
   }
 
-  50% {
-    opacity: 0.3;
-    transform: translateX(255%);
+  46% {
+    opacity: 0.2;
+    transform: translateX(248%);
   }
 
   100% {
     opacity: 0;
-    transform: translateX(-4%);
+    transform: translateX(248%);
   }
 }
 
 @keyframes fill-x {
   0%,
-  49% {
+  47% {
     transform: scaleX(0);
   }
 
-  50% {
-    transform: scaleX(0);
+  56% {
+    transform: scaleX(0.12);
   }
 
   100% {
@@ -757,47 +796,47 @@ body.is-started .hero-prelude {
 
 @keyframes scan-y {
   0% {
-    transform: translateY(-125%);
+    transform: translateY(-92%);
   }
 
-  50% {
-    transform: translateY(330%);
+  48% {
+    transform: translateY(350%);
   }
 
   100% {
-    transform: translateY(-10%);
+    transform: translateY(-8%);
   }
 }
 
 @keyframes trail-y {
   0% {
     opacity: 0;
-    transform: translateY(-135%);
+    transform: translateY(-98%);
   }
 
   14% {
     opacity: 0.72;
   }
 
-  50% {
-    opacity: 0.32;
-    transform: translateY(240%);
+  46% {
+    opacity: 0.22;
+    transform: translateY(248%);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(-8%);
+    transform: translateY(248%);
   }
 }
 
 @keyframes fill-y {
   0%,
-  49% {
+  47% {
     transform: scaleY(0);
   }
 
-  50% {
-    transform: scaleY(0);
+  56% {
+    transform: scaleY(0.12);
   }
 
   100% {
@@ -867,12 +906,12 @@ body.is-started .hero-prelude {
     display: none;
   }
 
-  .portal-button[data-size="large"] {
-    grid-column: span 12;
+  .link-grid {
+    grid-template-columns: 1fr;
   }
 
-  .portal-button[data-size="small"] {
-    grid-column: span 6;
+  .portal-lane-y {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -915,9 +954,12 @@ body.is-started .hero-prelude {
     grid-template-columns: 1fr;
   }
 
-  .portal-button[data-size="large"],
-  .portal-button[data-size="small"] {
-    grid-column: auto;
+  .portal-lane-y {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-lane-x .portal-button,
+  .portal-lane-y .portal-button {
     min-height: 112px;
   }
 
@@ -955,7 +997,6 @@ body.is-started .hero-prelude {
   .site-main,
   .hero-kicker,
   .hero-route,
-  .hero-prelude,
   .hero-note,
   .link-grid,
   .sweep-word {
