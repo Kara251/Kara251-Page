@@ -850,7 +850,6 @@ body.is-started .hero-route {
   opacity: 0.72;
 }
 
-.portal-button-reveal,
 .portal-button-line,
 .portal-button-trail {
   position: absolute;
@@ -862,6 +861,7 @@ body.is-started .hero-route {
   inset: 0;
   z-index: 0;
   background: var(--button-white);
+  opacity: 1;
   transform: scaleX(0);
   will-change: transform;
 }
@@ -967,34 +967,32 @@ body.is-started .hero-route {
   animation: fill-y var(--button-boot-duration) var(--ease-settle) forwards;
 }
 
+.portal-button.is-armed .portal-button-reveal {
+  transform: scaleX(1);
+}
+
+.portal-button.is-armed[data-axis="y"] .portal-button-reveal {
+  transform: scaleY(1);
+}
+
 @keyframes scan-x {
   0% {
     opacity: 0;
     transform: translate3d(-90%, 0, 0);
   }
 
-  12% {
-    opacity: 0.88;
+  10% {
+    opacity: 0.9;
   }
 
-  46% {
-    opacity: 0.78;
+  47% {
+    opacity: 0.9;
     transform: translate3d(328%, 0, 0);
   }
 
-  54% {
-    opacity: 0.74;
-    transform: translate3d(332%, 0, 0);
-  }
-
-  74% {
-    opacity: 0.68;
-    transform: translate3d(156%, 0, 0);
-  }
-
-  90% {
-    opacity: 0.5;
-    transform: translate3d(24%, 0, 0);
+  50% {
+    opacity: 0.86;
+    transform: translate3d(340%, 0, 0);
   }
 
   100% {
@@ -1009,48 +1007,30 @@ body.is-started .hero-route {
     transform: translate3d(-96%, 0, 0);
   }
 
-  14% {
-    opacity: 0.56;
+  16% {
+    opacity: 0.26;
   }
 
   46% {
-    opacity: 0.18;
+    opacity: 0.1;
     transform: translate3d(230%, 0, 0);
   }
 
-  58% {
-    opacity: 0.14;
-    transform: translate3d(236%, 0, 0);
-  }
-
-  74% {
-    opacity: 0.16;
-    transform: translate3d(112%, 0, 0);
-  }
-
-  92% {
-    opacity: 0.08;
-    transform: translate3d(-4%, 0, 0);
-  }
-
+  54%,
   100% {
     opacity: 0;
-    transform: translate3d(-18%, 0, 0);
+    transform: translate3d(246%, 0, 0);
   }
 }
 
 @keyframes fill-x {
   0%,
-  40% {
+  49% {
     transform: scaleX(0);
   }
 
-  60% {
-    transform: scaleX(0.14);
-  }
-
-  82% {
-    transform: scaleX(0.62);
+  50% {
+    transform: scaleX(0.02);
   }
 
   100% {
@@ -1064,28 +1044,18 @@ body.is-started .hero-route {
     transform: translate3d(0, -92%, 0);
   }
 
-  12% {
-    opacity: 0.88;
+  10% {
+    opacity: 0.9;
   }
 
-  46% {
-    opacity: 0.78;
+  47% {
+    opacity: 0.9;
     transform: translate3d(0, 330%, 0);
   }
 
-  54% {
-    opacity: 0.74;
-    transform: translate3d(0, 334%, 0);
-  }
-
-  74% {
-    opacity: 0.68;
-    transform: translate3d(0, 158%, 0);
-  }
-
-  90% {
-    opacity: 0.5;
-    transform: translate3d(0, 26%, 0);
+  50% {
+    opacity: 0.86;
+    transform: translate3d(0, 342%, 0);
   }
 
   100% {
@@ -1100,48 +1070,30 @@ body.is-started .hero-route {
     transform: translate3d(0, -98%, 0);
   }
 
-  14% {
-    opacity: 0.56;
+  16% {
+    opacity: 0.26;
   }
 
   46% {
-    opacity: 0.18;
+    opacity: 0.1;
     transform: translate3d(0, 230%, 0);
   }
 
-  58% {
-    opacity: 0.14;
-    transform: translate3d(0, 236%, 0);
-  }
-
-  74% {
-    opacity: 0.16;
-    transform: translate3d(0, 112%, 0);
-  }
-
-  92% {
-    opacity: 0.08;
-    transform: translate3d(0, -4%, 0);
-  }
-
+  54%,
   100% {
     opacity: 0;
-    transform: translate3d(0, -18%, 0);
+    transform: translate3d(0, 246%, 0);
   }
 }
 
 @keyframes fill-y {
   0%,
-  40% {
+  49% {
     transform: scaleY(0);
   }
 
-  60% {
-    transform: scaleY(0.14);
-  }
-
-  82% {
-    transform: scaleY(0.62);
+  50% {
+    transform: scaleY(0.02);
   }
 
   100% {
