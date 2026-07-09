@@ -57,6 +57,20 @@ const BUTTONS = [
     domain: "x.com/karakara0251",
     href: "https://x.com/karakara0251",
     axis: "x"
+  },
+  {
+    title: "lyrics.kara251.com",
+    subtitle: "Design the world",
+    domain: "lyrics.kara251.com",
+    href: "https://lyrics.kara251.com",
+    axis: "x"
+  },
+  {
+    title: "zankyo.kara251.com",
+    subtitle: "Solo Esport Team",
+    domain: "zankyo.kara251.com",
+    href: "https://zankyo.kara251.com",
+    axis: "x"
   }
 ];
 

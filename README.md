@@ -28,8 +28,8 @@
 - 纯黑背景
 - 三组轮廓大字扫屏：`Veritas`、`Claritas`、`Amor`
 - 主标题以打字机方式逐行出现
-- 首次进入强制语言选择，并覆盖 `tc` / `sc` / `hx` / `wy` / `en` / `yue` / `ja`
-- 不保存 cookie，不记住语言
+- 首次进入会要求语言选择，并覆盖 `tc` / `sc` / `hx` / `wy` / `en` / `yue` / `ja`
+- 不保存 cookie，语言偏好只保存在当前浏览器的 `localStorage`
 - 页面响应头设置为 `no-store`
 - 运行时会主动清理 storage、cache、service worker
 - 外链按钮点击后红框强调，再新开标签页跳转
