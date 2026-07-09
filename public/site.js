@@ -59,14 +59,14 @@ const BUTTONS = [
     axis: "x"
   },
   {
-    title: "lyrics.kara251.com",
+    title: "Lyrics Kara",
     subtitle: "Design the world",
     domain: "lyrics.kara251.com",
     href: "https://lyrics.kara251.com",
     axis: "x"
   },
   {
-    title: "zankyo.kara251.com",
+    title: "Team Zankyo",
     subtitle: "Solo Esport Team",
     domain: "zankyo.kara251.com",
     href: "https://zankyo.kara251.com",
