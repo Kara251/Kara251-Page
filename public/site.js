@@ -12,7 +12,7 @@ const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
 const LOCALE_STORAGE_KEY = "kara251:locale";
-const BUTTON_BOOT_DURATION = 1680;
+const BUTTON_BOOT_DURATION = 700;
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
   "网站名称：",
@@ -810,26 +810,26 @@ function clearTypeTimers() {
 
 function getTypeDelay(segment) {
   if (!segment) {
-    return 84;
-  }
-
-  if (/[\u3002\uff01\uff1f.!?]/u.test(segment)) {
-    return 188;
-  }
-
-  if (/[\uff0c\u3001,;:：；]/u.test(segment)) {
-    return 136;
-  }
-
-  if (/\s/u.test(segment)) {
     return 42;
   }
 
-  if (/[A-Za-z0-9]/.test(segment)) {
-    return 72;
+  if (/[\u3002\uff01\uff1f.!?]/u.test(segment)) {
+    return 94;
   }
 
-  return 86;
+  if (/[\uff0c\u3001,;:：；]/u.test(segment)) {
+    return 68;
+  }
+
+  if (/\s/u.test(segment)) {
+    return 22;
+  }
+
+  if (/[A-Za-z0-9]/.test(segment)) {
+    return 36;
+  }
+
+  return 42;
 }
 
 function resetHeroLines() {
@@ -864,7 +864,7 @@ function typeLine(node, text, speed, token) {
         return;
       }
 
-      typeTimer = window.setTimeout(step, Math.max(40, speed + getTypeDelay(segment) - 86));
+      typeTimer = window.setTimeout(step, Math.max(20, speed + getTypeDelay(segment) - 42));
     }
 
     step();
@@ -893,7 +893,7 @@ function bootButtons() {
   dom.linkGrid.classList.add("is-visible");
 
   dom.linkGrid.querySelectorAll(".portal-button").forEach((button, index) => {
-    const delay = index * 150;
+    const delay = index * 60;
 
     button.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -916,7 +916,7 @@ function bootFriendCards() {
   dom.friendShell.classList.add("is-visible");
 
   dom.friendShell.querySelectorAll(".friend-link-card").forEach((card, index) => {
-    const delay = index * 160;
+    const delay = index * 60;
 
     card.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -959,6 +959,45 @@ function setupFriendObserver() {
   friendObserver.observe(dom.friendShell);
 }
 
+let heroSkipDisarm = null;
+
+function disarmHeroSkip() {
+  if (heroSkipDisarm) {
+    heroSkipDisarm();
+  }
+}
+
+function skipHeroSequence(copy, replayButtons) {
+  disarmHeroSkip();
+  typeSequenceToken += 1;
+  clearTypeTimers();
+  dom.heroLine1.textContent = copy.heroLines[0];
+  dom.heroLine2.textContent = copy.heroLines[1];
+  dom.heroLine1.classList.remove("is-active");
+  dom.heroLine2.classList.remove("is-active");
+  dom.heroNote.classList.add("is-visible");
+
+  if (replayButtons) {
+    setButtonsFinalState();
+  }
+}
+
+function armHeroSkip(copy, replayButtons) {
+  disarmHeroSkip();
+
+  const onSkip = () => {
+    skipHeroSequence(copy, replayButtons);
+  };
+
+  document.addEventListener("pointerdown", onSkip);
+  document.addEventListener("keydown", onSkip);
+  heroSkipDisarm = () => {
+    document.removeEventListener("pointerdown", onSkip);
+    document.removeEventListener("keydown", onSkip);
+    heroSkipDisarm = null;
+  };
+}
+
 async function playHeroSequence({ replayButtons }) {
   const copy = getCopy();
 
@@ -978,26 +1017,29 @@ async function playHeroSequence({ replayButtons }) {
     return;
   }
 
+  armHeroSkip(copy, replayButtons);
+
   const token = typeSequenceToken;
-  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 84, token);
+  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 42, token);
 
   if (!firstDone) {
     return;
   }
 
   typeTimer = window.setTimeout(async () => {
-    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 84, token);
+    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 42, token);
 
     if (!secondDone || token !== typeSequenceToken) {
       return;
     }
 
+    disarmHeroSkip();
     dom.heroNote.classList.add("is-visible");
 
     if (replayButtons) {
-      window.setTimeout(() => bootButtons(), 260);
+      window.setTimeout(() => bootButtons(), 120);
     }
-  }, 240);
+  }, 120);
 }
 
 function closeGateAndStart() {
