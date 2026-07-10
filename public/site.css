@@ -14,11 +14,11 @@
   --font-sans: "Helvetica Neue", "Noto Sans TC", "Noto Sans CJK TC", "PingFang TC", "Hiragino Sans", Arial, sans-serif;
   --font-display: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --shell: min(100% - 40px, 980px);
+  --ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-quick: cubic-bezier(0.3, 0.9, 0.4, 1);
-  --ease-smooth: var(--ease-settle);
-  --ease-glide: var(--ease-settle);
-  --button-boot-duration: 700ms;
+  --ease-glide: cubic-bezier(0.27, 0.8, 0.22, 1);
+  --button-boot-duration: 1520ms;
 }
 
 *,
@@ -327,27 +327,27 @@ html[data-locale-persisted="true"] .lang-gate {
 }
 
 body.is-started .sweep-word-1 {
-  animation: sweep-word 700ms var(--ease-smooth) 80ms forwards;
+  animation: sweep-word 1840ms var(--ease-smooth) 140ms forwards;
 }
 
 body.is-started .sweep-word-2 {
-  animation: sweep-word 780ms var(--ease-smooth) 160ms forwards;
+  animation: sweep-word 2040ms var(--ease-smooth) 380ms forwards;
 }
 
 body.is-started .sweep-word-3 {
-  animation: sweep-word 860ms var(--ease-smooth) 240ms forwards;
+  animation: sweep-word 2240ms var(--ease-smooth) 640ms forwards;
 }
 
 body.is-started .sweep-word-1::after {
-  animation: sweep-beam 700ms var(--ease-smooth) 80ms forwards;
+  animation: sweep-beam 1840ms var(--ease-smooth) 140ms forwards;
 }
 
 body.is-started .sweep-word-2::after {
-  animation: sweep-beam 780ms var(--ease-smooth) 160ms forwards;
+  animation: sweep-beam 2040ms var(--ease-smooth) 380ms forwards;
 }
 
 body.is-started .sweep-word-3::after {
-  animation: sweep-beam 860ms var(--ease-smooth) 240ms forwards;
+  animation: sweep-beam 2240ms var(--ease-smooth) 640ms forwards;
 }
 
 @keyframes sweep-word {

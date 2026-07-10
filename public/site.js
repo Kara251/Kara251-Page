@@ -12,7 +12,7 @@ const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
 const LOCALE_STORAGE_KEY = "kara251:locale";
-const BUTTON_BOOT_DURATION = 700;
+const BUTTON_BOOT_DURATION = 1520;
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
   "网站名称：",
@@ -339,6 +339,7 @@ const dom = {
   langSelect: document.getElementById("lang-select"),
   heroKicker: document.getElementById("hero-kicker"),
   heroRoute: document.getElementById("hero-route"),
+  heroLead: document.querySelector(".hero-lead"),
   heroLine1: document.getElementById("hero-line-1"),
   heroLine2: document.getElementById("hero-line-2"),
   heroNote: document.getElementById("hero-note"),
@@ -357,6 +358,7 @@ const dom = {
 
 let currentLocale = "tc";
 let typeTimer = 0;
+let typeResolve = null;
 let typeSequenceToken = 0;
 let initialSequencePlayed = false;
 let friendObserver = null;
@@ -806,30 +808,36 @@ function setLocale(locale, options = {}) {
 function clearTypeTimers() {
   window.clearTimeout(typeTimer);
   typeTimer = 0;
+
+  if (typeResolve) {
+    const resolvePendingType = typeResolve;
+    typeResolve = null;
+    resolvePendingType(false);
+  }
 }
 
 function getTypeDelay(segment) {
   if (!segment) {
-    return 42;
+    return 72;
   }
 
   if (/[\u3002\uff01\uff1f.!?]/u.test(segment)) {
-    return 94;
+    return 150;
   }
 
   if (/[\uff0c\u3001,;:：；]/u.test(segment)) {
-    return 68;
+    return 110;
   }
 
   if (/\s/u.test(segment)) {
-    return 22;
-  }
-
-  if (/[A-Za-z0-9]/.test(segment)) {
     return 36;
   }
 
-  return 42;
+  if (/[A-Za-z0-9]/.test(segment)) {
+    return 60;
+  }
+
+  return 72;
 }
 
 function resetHeroLines() {
@@ -848,9 +856,21 @@ function typeLine(node, text, speed, token) {
   node.classList.add("is-active");
 
   return new Promise((resolve) => {
+    const finish = (completed) => {
+      node.classList.remove("is-active");
+
+      if (typeResolve === finish) {
+        typeResolve = null;
+      }
+
+      resolve(completed);
+    };
+
+    typeResolve = finish;
+
     function step() {
       if (token !== typeSequenceToken) {
-        resolve(false);
+        finish(false);
         return;
       }
 
@@ -859,12 +879,11 @@ function typeLine(node, text, speed, token) {
       index += 1;
 
       if (index >= segments.length) {
-        node.classList.remove("is-active");
-        resolve(true);
+        finish(true);
         return;
       }
 
-      typeTimer = window.setTimeout(step, Math.max(20, speed + getTypeDelay(segment) - 42));
+      typeTimer = window.setTimeout(step, Math.max(32, speed + getTypeDelay(segment) - 72));
     }
 
     step();
@@ -893,7 +912,7 @@ function bootButtons() {
   dom.linkGrid.classList.add("is-visible");
 
   dom.linkGrid.querySelectorAll(".portal-button").forEach((button, index) => {
-    const delay = index * 60;
+    const delay = index * 120;
 
     button.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -916,7 +935,7 @@ function bootFriendCards() {
   dom.friendShell.classList.add("is-visible");
 
   dom.friendShell.querySelectorAll(".friend-link-card").forEach((card, index) => {
-    const delay = index * 60;
+    const delay = index * 130;
 
     card.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -985,15 +1004,27 @@ function skipHeroSequence(copy, replayButtons) {
 function armHeroSkip(copy, replayButtons) {
   disarmHeroSkip();
 
-  const onSkip = () => {
+  const onPointerSkip = (event) => {
+    if (event.button !== 0 || event.target.closest("a, button, input, select, textarea")) {
+      return;
+    }
+
     skipHeroSequence(copy, replayButtons);
   };
 
-  document.addEventListener("pointerdown", onSkip);
-  document.addEventListener("keydown", onSkip);
+  const onKeyboardSkip = (event) => {
+    if (event.defaultPrevented || event.key !== "Escape") {
+      return;
+    }
+
+    skipHeroSequence(copy, replayButtons);
+  };
+
+  dom.heroLead.addEventListener("pointerdown", onPointerSkip);
+  document.addEventListener("keydown", onKeyboardSkip);
   heroSkipDisarm = () => {
-    document.removeEventListener("pointerdown", onSkip);
-    document.removeEventListener("keydown", onSkip);
+    dom.heroLead.removeEventListener("pointerdown", onPointerSkip);
+    document.removeEventListener("keydown", onKeyboardSkip);
     heroSkipDisarm = null;
   };
 }
@@ -1020,14 +1051,14 @@ async function playHeroSequence({ replayButtons }) {
   armHeroSkip(copy, replayButtons);
 
   const token = typeSequenceToken;
-  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 42, token);
+  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 72, token);
 
   if (!firstDone) {
     return;
   }
 
   typeTimer = window.setTimeout(async () => {
-    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 42, token);
+    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 72, token);
 
     if (!secondDone || token !== typeSequenceToken) {
       return;
@@ -1037,9 +1068,9 @@ async function playHeroSequence({ replayButtons }) {
     dom.heroNote.classList.add("is-visible");
 
     if (replayButtons) {
-      window.setTimeout(() => bootButtons(), 120);
+      window.setTimeout(() => bootButtons(), 240);
     }
-  }, 120);
+  }, 220);
 }
 
 function closeGateAndStart() {
