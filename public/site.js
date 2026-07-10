@@ -12,7 +12,7 @@ const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
 const LOCALE_STORAGE_KEY = "kara251:locale";
-const BUTTON_BOOT_DURATION = 1520;
+const BUTTON_BOOT_DURATION = 1680;
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
   "网站名称：",
@@ -818,26 +818,26 @@ function clearTypeTimers() {
 
 function getTypeDelay(segment) {
   if (!segment) {
-    return 72;
+    return 84;
   }
 
   if (/[\u3002\uff01\uff1f.!?]/u.test(segment)) {
-    return 150;
+    return 188;
   }
 
   if (/[\uff0c\u3001,;:：；]/u.test(segment)) {
-    return 110;
+    return 136;
   }
 
   if (/\s/u.test(segment)) {
-    return 36;
+    return 42;
   }
 
   if (/[A-Za-z0-9]/.test(segment)) {
-    return 60;
+    return 72;
   }
 
-  return 72;
+  return 86;
 }
 
 function resetHeroLines() {
@@ -883,7 +883,7 @@ function typeLine(node, text, speed, token) {
         return;
       }
 
-      typeTimer = window.setTimeout(step, Math.max(32, speed + getTypeDelay(segment) - 72));
+      typeTimer = window.setTimeout(step, Math.max(40, speed + getTypeDelay(segment) - 86));
     }
 
     step();
@@ -912,7 +912,7 @@ function bootButtons() {
   dom.linkGrid.classList.add("is-visible");
 
   dom.linkGrid.querySelectorAll(".portal-button").forEach((button, index) => {
-    const delay = index * 120;
+    const delay = index * 150;
 
     button.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -935,7 +935,7 @@ function bootFriendCards() {
   dom.friendShell.classList.add("is-visible");
 
   dom.friendShell.querySelectorAll(".friend-link-card").forEach((card, index) => {
-    const delay = index * 130;
+    const delay = index * 160;
 
     card.classList.remove("is-armed", "is-leaving");
     window.setTimeout(() => {
@@ -1051,14 +1051,14 @@ async function playHeroSequence({ replayButtons }) {
   armHeroSkip(copy, replayButtons);
 
   const token = typeSequenceToken;
-  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 72, token);
+  const firstDone = await typeLine(dom.heroLine1, copy.heroLines[0], 84, token);
 
   if (!firstDone) {
     return;
   }
 
   typeTimer = window.setTimeout(async () => {
-    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 72, token);
+    const secondDone = await typeLine(dom.heroLine2, copy.heroLines[1], 84, token);
 
     if (!secondDone || token !== typeSequenceToken) {
       return;
@@ -1068,9 +1068,9 @@ async function playHeroSequence({ replayButtons }) {
     dom.heroNote.classList.add("is-visible");
 
     if (replayButtons) {
-      window.setTimeout(() => bootButtons(), 240);
+      window.setTimeout(() => bootButtons(), 260);
     }
-  }, 220);
+  }, 240);
 }
 
 function closeGateAndStart() {
