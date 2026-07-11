@@ -117,6 +117,21 @@ const FRIEND_LINKS = [
       ja: "思いや考えを分かち合い、音楽を探る ACG サイト"
     },
     logo: "https://forum.hanakos.cc/icons/icon-512.png"
+  },
+  {
+    title: "WhiteNX",
+    domain: "eyling.top",
+    href: "https://eyling.top",
+    description: {
+      tc: "WhiteNX 的個人網站",
+      sc: "WhiteNX 的个人网站",
+      hx: "WhiteNX 嘅個人網站",
+      wy: "WhiteNX 之個人網站",
+      en: "WhiteNX's personal website",
+      yue: "WhiteNX 嘅個人網站",
+      ja: "WhiteNX の個人サイト"
+    },
+    logo: "/assets/whitenx.jpg"
   }
 ];
 
@@ -427,6 +442,8 @@ function renderFriendLinkLogo(friendLink) {
       class="friend-link-logo"
       src="${friendLink.logo}"
       alt="${friendLink.title} logo"
+      width="88"
+      height="88"
       loading="lazy"
       decoding="async"
     >
