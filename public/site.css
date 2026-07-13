@@ -568,6 +568,10 @@ body.is-started .hero-route {
   transform: translate3d(0, 0, 0);
 }
 
+.portal-button-group-start {
+  grid-column-start: 1;
+}
+
 .friend-shell {
   display: grid;
   gap: 18px;

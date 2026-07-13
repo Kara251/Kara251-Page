@@ -31,10 +31,24 @@ const BUTTONS = [
     axis: "x"
   },
   {
+    title: "Lyrics Kara",
+    subtitle: "Design the world",
+    domain: "lyrics.kara251.com",
+    href: "https://lyrics.kara251.com",
+    axis: "x"
+  },
+  {
     title: "EXAM KARA",
-    subtitle: "卡拉测试",
+    subtitle: "趣味测试",
     domain: "exam.kara251.com",
     href: "https://exam.kara251.com",
+    axis: "x"
+  },
+  {
+    title: "Team Zankyo",
+    subtitle: "Solo Club",
+    domain: "zankyo.kara251.com",
+    href: "https://zankyo.kara251.com",
     axis: "x"
   },
   {
@@ -45,11 +59,12 @@ const BUTTONS = [
     axis: "x"
   },
   {
-    title: "GitHub",
-    subtitle: "Kara251",
-    domain: "github.com/Kara251",
-    href: "https://github.com/Kara251",
-    axis: "x"
+    title: "YouTube",
+    subtitle: "@Karakara251",
+    domain: "youtube.com/@Karakara251",
+    href: "https://www.youtube.com/@Karakara251",
+    axis: "x",
+    groupStart: true
   },
   {
     title: "X",
@@ -59,17 +74,10 @@ const BUTTONS = [
     axis: "x"
   },
   {
-    title: "Lyrics Kara",
-    subtitle: "Design the world",
-    domain: "lyrics.kara251.com",
-    href: "https://lyrics.kara251.com",
-    axis: "x"
-  },
-  {
-    title: "Team Zankyo",
-    subtitle: "Solo Esport Team",
-    domain: "zankyo.kara251.com",
-    href: "https://zankyo.kara251.com",
+    title: "GitHub",
+    subtitle: "Kara251",
+    domain: "github.com/Kara251",
+    href: "https://github.com/Kara251",
     axis: "x"
   }
 ];
@@ -599,6 +607,11 @@ function buildButtons() {
     const copy = getCopy();
     button.type = "button";
     button.className = "portal-button";
+
+    if (buttonConfig.groupStart) {
+      button.classList.add("portal-button-group-start");
+    }
+
     button.dataset.axis = buttonConfig.axis;
     button.dataset.href = buttonConfig.href;
     button.setAttribute(
