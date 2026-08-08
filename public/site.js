@@ -140,6 +140,21 @@ const FRIEND_LINKS = [
       ja: "WhiteNX の個人サイト"
     },
     logo: "/assets/whitenx.jpg"
+  },
+  {
+    title: "LMS Luos",
+    domain: "www.lmsluos.com",
+    href: "https://www.lmsluos.com",
+    description: {
+      tc: "LMS Luos (RootW) 的個人網站",
+      sc: "LMS Luos (RootW) 的个人网站",
+      hx: "LMS Luos (RootW) 嘅個人網站",
+      wy: "LMS Luos (RootW) 之個人網站",
+      en: "LMS Luos (RootW)'s personal website",
+      yue: "LMS Luos (RootW) 嘅個人網站",
+      ja: "LMS Luos (RootW) の個人サイト"
+    },
+    logo: "/assets/lmsluos.jpg"
   }
 ];
 
