@@ -38,7 +38,7 @@
 
 ## 语言支持
 
-当前沿用 `../material/exam-kara` 的语言集合：
+当前沿用 Mirror-Test 的语言集合：
 
 - `tc` 繁中
 - `sc` 简中

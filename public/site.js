@@ -38,10 +38,10 @@ const BUTTONS = [
     axis: "x"
   },
   {
-    title: "EXAM KARA",
+    title: "Mirror-Test",
     subtitle: "趣味测试",
-    domain: "exam.kara251.com",
-    href: "https://exam.kara251.com",
+    domain: "test.turingmirror.com",
+    href: "https://test.turingmirror.com",
     axis: "x"
   },
   {

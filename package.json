@@ -10,6 +10,6 @@
     "deploy": "WRANGLER_LOG_PATH=.wrangler/logs wrangler pages deploy public --project-name kara251-page"
   },
   "devDependencies": {
-    "wrangler": "^4"
+    "wrangler": "4.127.1"
   }
 }
