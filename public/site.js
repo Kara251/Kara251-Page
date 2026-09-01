@@ -54,8 +54,8 @@ const BUTTONS = [
   {
     title: "Turing Mirror",
     subtitle: "图灵镜",
-    domain: "tmc.kara251.com",
-    href: "https://tmc.kara251.com",
+    domain: "www.turingmirror.com",
+    href: "https://www.turingmirror.com/",
     axis: "x"
   },
   {
