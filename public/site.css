@@ -618,7 +618,7 @@ body.is-started .hero-route {
   cursor: pointer;
   overflow: hidden;
   isolation: isolate;
-  transition: transform 320ms var(--ease-settle), border-color 260ms var(--ease-settle), color 320ms var(--ease-settle), background 320ms var(--ease-settle), box-shadow 320ms var(--ease-settle);
+  transition: transform 320ms var(--ease-settle), border-color 260ms var(--ease-settle), box-shadow 320ms var(--ease-settle);
 }
 
 .portal-button.is-armed {
@@ -833,7 +833,7 @@ body.is-started .hero-route {
 }
 
 .portal-button.is-booting .portal-button-copy {
-  animation: button-copy-flip var(--button-boot-duration) var(--ease-glide) forwards;
+  animation-name: button-copy-flip;
 }
 
 @keyframes button-copy-flip {
@@ -870,6 +870,21 @@ body.is-started .hero-route {
   opacity: 0.72;
 }
 
+.portal-button :is(.portal-button-reveal, .portal-button-line, .portal-button-trail) {
+  display: none;
+}
+
+.portal-button.is-booting :is(.portal-button-reveal, .portal-button-line, .portal-button-trail) {
+  display: block;
+}
+
+.portal-button.is-booting :is(.portal-button-copy, .portal-button-reveal, .portal-button-line, .portal-button-trail) {
+  animation-duration: var(--button-boot-duration);
+  animation-delay: var(--button-boot-delay);
+  animation-timing-function: var(--ease-glide);
+  animation-fill-mode: forwards;
+}
+
 .portal-button-line,
 .portal-button-trail {
   position: absolute;
@@ -885,7 +900,6 @@ body.is-started .hero-route {
   opacity: 1;
   pointer-events: none;
   transform: scaleX(0);
-  will-change: transform;
 }
 
 .portal-button[data-axis="x"] .portal-button-reveal {
@@ -900,13 +914,11 @@ body.is-started .hero-route {
 .portal-button-line {
   z-index: 1;
   background: rgba(255, 255, 255, 0.98);
-  will-change: transform, opacity;
 }
 
 .portal-button-trail {
   z-index: 1;
   filter: blur(22px);
-  will-change: transform, opacity;
 }
 
 .portal-button[data-axis="x"] .portal-button-line {
@@ -966,35 +978,29 @@ body.is-started .hero-route {
 }
 
 .portal-button.is-booting[data-axis="x"] .portal-button-line {
-  animation: scan-x var(--button-boot-duration) var(--ease-glide) forwards;
+  animation-name: scan-x;
 }
 
 .portal-button.is-booting[data-axis="x"] .portal-button-trail {
-  animation: trail-x var(--button-boot-duration) var(--ease-glide) forwards;
+  animation-name: trail-x;
 }
 
 .portal-button.is-booting[data-axis="x"] .portal-button-reveal {
-  animation: fill-x var(--button-boot-duration) linear forwards;
+  animation-name: fill-x;
+  animation-timing-function: linear;
 }
 
 .portal-button.is-booting[data-axis="y"] .portal-button-line {
-  animation: scan-y var(--button-boot-duration) var(--ease-glide) forwards;
+  animation-name: scan-y;
 }
 
 .portal-button.is-booting[data-axis="y"] .portal-button-trail {
-  animation: trail-y var(--button-boot-duration) var(--ease-glide) forwards;
+  animation-name: trail-y;
 }
 
 .portal-button.is-booting[data-axis="y"] .portal-button-reveal {
-  animation: fill-y var(--button-boot-duration) linear forwards;
-}
-
-.portal-button.is-armed .portal-button-reveal {
-  transform: scaleX(1);
-}
-
-.portal-button.is-armed[data-axis="y"] .portal-button-reveal {
-  transform: scaleY(1);
+  animation-name: fill-y;
+  animation-timing-function: linear;
 }
 
 @keyframes scan-x {

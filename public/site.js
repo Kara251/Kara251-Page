@@ -12,7 +12,6 @@ const SITE_TITLE = "Kara251 - Veritas, Claritas, Amor";
 const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
 const LOCALE_STORAGE_KEY = "kara251:locale";
-const BUTTON_BOOT_DURATION = 1680;
 const CONTACT_EMAIL = "marisaonly@outlook.com";
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
@@ -617,7 +616,7 @@ function buildSelect() {
 function buildButtons() {
   dom.linkGrid.innerHTML = "";
 
-  BUTTONS.forEach((buttonConfig, index) => {
+  BUTTONS.forEach((buttonConfig) => {
     const button = document.createElement("button");
     const copy = getCopy();
     button.type = "button";
@@ -644,7 +643,6 @@ function buildButtons() {
       </span>
     `;
     button.addEventListener("click", () => openButtonTarget(button));
-    button.style.setProperty("--boot-delay", `${index * 110}ms`);
     dom.linkGrid.append(button);
   });
 }
@@ -953,22 +951,21 @@ function setFriendCardsFinalState() {
   });
 }
 
+function animateCards(cards, stagger) {
+  cards.forEach((card, index) => {
+    const reveal = card.querySelector(".portal-button-reveal");
+    card.style.setProperty("--button-boot-delay", `${index * stagger}ms`);
+    reveal.addEventListener("animationend", () => {
+      card.classList.replace("is-booting", "is-armed");
+    }, { once: true });
+    card.classList.remove("is-armed", "is-leaving");
+    card.classList.add("is-booting");
+  });
+}
+
 function bootButtons() {
   dom.linkGrid.classList.add("is-visible");
-
-  dom.linkGrid.querySelectorAll(".portal-button").forEach((button, index) => {
-    const delay = index * 150;
-
-    button.classList.remove("is-armed", "is-leaving");
-    window.setTimeout(() => {
-      button.classList.add("is-booting");
-    }, delay);
-
-    window.setTimeout(() => {
-      button.classList.remove("is-booting");
-      button.classList.add("is-armed");
-    }, delay + BUTTON_BOOT_DURATION);
-  });
+  animateCards(dom.linkGrid.querySelectorAll(".portal-button"), 150);
 }
 
 function bootFriendCards() {
@@ -979,19 +976,7 @@ function bootFriendCards() {
   friendCardsActivated = true;
   dom.friendShell.classList.add("is-visible");
 
-  dom.friendShell.querySelectorAll(".friend-link-card").forEach((card, index) => {
-    const delay = index * 160;
-
-    card.classList.remove("is-armed", "is-leaving");
-    window.setTimeout(() => {
-      card.classList.add("is-booting");
-    }, delay);
-
-    window.setTimeout(() => {
-      card.classList.remove("is-booting");
-      card.classList.add("is-armed");
-    }, delay + BUTTON_BOOT_DURATION);
-  });
+  animateCards(dom.friendGrid.querySelectorAll(".friend-link-card"), 160);
 }
 
 function setupFriendObserver() {
