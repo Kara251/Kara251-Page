@@ -13,6 +13,7 @@ const CANONICAL_HOST = "www.kara251.com";
 const APEX_HOST = "kara251.com";
 const LOCALE_STORAGE_KEY = "kara251:locale";
 const BUTTON_BOOT_DURATION = 1680;
+const CONTACT_EMAIL = "marisaonly@outlook.com";
 const FRIEND_LINK_MAIL_SUBJECT = "《申请加入kara251.com的友链列表》";
 const FRIEND_LINK_MAIL_BODY = [
   "网站名称：",
@@ -99,8 +100,8 @@ const SELF_EXCHANGE = {
   contacts: [
     {
       label: "Email",
-      text: "kara@bakivo.com",
-      href: "mailto:kara@bakivo.com"
+      text: CONTACT_EMAIL,
+      href: `mailto:${CONTACT_EMAIL}`
     },
     {
       label: "X",
@@ -537,13 +538,12 @@ function setActionFeedback(button, text) {
 }
 
 function buildFriendMailtoHref() {
-  const recipient = SELF_EXCHANGE.contacts[0].text;
   const params = new URLSearchParams({
     subject: FRIEND_LINK_MAIL_SUBJECT,
     body: FRIEND_LINK_MAIL_BODY
   });
 
-  return `mailto:${recipient}?${params.toString()}`;
+  return `mailto:${CONTACT_EMAIL}?${params.toString()}`;
 }
 
 async function clearRuntimeState() {
